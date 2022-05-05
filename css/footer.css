@@ -1,0 +1,26 @@
+/* FOOTER*/
+.footer 
+  {
+    margin-top: 100px;
+    background-color: black;
+    position:fixed;
+    width: 100%;
+    height:15%;
+    margin: 0;
+  }
+  .footer p{
+    color:#f48c5b;
+    margin-left:80px;
+    margin-top: 20px;
+    float:left;
+    font-size: 16px;
+    position:absolute;
+    width: 100%;
+    height:2%;
+  }
+  .copyright{
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color:#f48c5b;
+  }
