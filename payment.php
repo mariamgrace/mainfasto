@@ -8,6 +8,13 @@ while($r = mysqli_fetch_array($res))
 {
 $uname=$r['username'];  //username from table field & $uname is a random name
 }
+
+if(isset($_SESSION["fastoSession"]) != session_id()){
+    header("Location:index.php");
+    die();
+}
+
+else{
 ?>
 
 <!DOCTYPE html>
@@ -145,4 +152,9 @@ $uname=$r['username'];  //username from table field & $uname is a random name
     </body>
     </html>
 
+
+    
+<?php
+}
+?>
 
