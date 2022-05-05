@@ -16,8 +16,6 @@ if(isset($_SESSION["fastoSession"]) != session_id()){
 else{
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +26,7 @@ else{
     <link rel="stylesheet" href="dashboard.css" />
     <link rel="stylesheet" href=".//css/order.css">
     <link rel="stylesheet" href=".//css/footer.css">
+    <script src="js/sweetalert.js"></script>  
     <title>Assign Courier Boys</title>
     <link rel="icon" href="images/iconbox.png">
 
@@ -300,12 +299,13 @@ else{
             while($rest = mysqli_fetch_array($results))
             {
                 $cboyid=$rest["idnumber"];
-                $applyquery="INSERT INTO `tbl_courier`(`assigned_cboy_id`) VALUES ('$boyID')";
-                //$applyquery="UPDATE `tbl_courier` SET `assigned_cboy_id`='[$boyID]'";
+                //$applyquery="INSERT INTO `tbl_courier`(`assigned_cboy_id`) VALUES ('$boyID')";
+                $applyquery="UPDATE tbl_courier SET assigned_cboy_id='$boyID'";
+                //$sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
                 $applyquery_run = mysqli_query($con,$applyquery);
                 if($applyquery_run)
                 {
-                    $_SESSION['status']="Assign Success";
+                    $_SESSION['status']="Courier Assigned Successfully";
                     $_SESSION['status_code']="success";
                     //echo '<script type="text/javascript"> alert("User Rgistered Successfully!!!Go To Login..!!")</script>';                                      
                 }
