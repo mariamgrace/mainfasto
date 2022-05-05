@@ -50,36 +50,51 @@ $uname=$r['username'];  //username from table field & $uname is a random name
             <div class="col-12">
             <div class="card p-3">
             <div class="card-body border p-0">
-                <p> <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample"> <span class="fw-bold">Details</span> </span> </a> </p>
+                <p> <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample"> <span class="fw-bold">Card details</span> <span class=""> <span class="fab fa-cc-amex"></span> <span class="fab fa-cc-mastercard"></span> <span class="fab fa-cc-discover"></span> </span> </a> </p>
                 <div class="collapse show p-3 pt-0" id="collapseExample">
-                    <div class="row">
+                <div class="row">
+                    <div class="col-lg-5 mb-lg-0 mb-3">
+                        <p class="h4 mb-0">Summary</p>
+                        <p class="mb-0"><span class="fw-bold">Product:</span><span class="c-green"></span> </p>
+                        <p class="mb-0"> <span class="fw-bold">Total Amount:</span> <span class="c-green"></span> </p>
+                        <p class="mb-0"></p>
+                    </div>
                         <div class="col-lg-7">
-
-                            <form>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form__div"> <input type="text" name="name" id="name" class="form-control" placeholder=" "> <label for="" class="form__label">Name</label> </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form__div"> <input type="text" name="amt" id="amt" class="form-control" placeholder=" "> <label for="" class="form__label">Amount</label> </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="btn btn-primary payment" onclick="pay_now()"> Make Payment </div>
-                                    </div>
+                            <form action="" class="form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form__div"> <input type="text" class="form-control" placeholder=" "> <label for="" class="form__label">Card Number</label> </div>
                                 </div>
+                                <div class="col-6">
+                                    <div class="form__div"> <input type="text" class="form-control" placeholder=" "> <label for="" class="form__label">MM / yy</label> </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form__div"> <input type="password" class="form-control" placeholder=" "> <label for="" class="form__label">cvv code</label> </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form__div"> <input type="text" class="form-control" placeholder=" "> <label for="" class="form__label">name on the card</label> </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="btn btn-primary payment" onclick="pay_now()"> Make Payment </div>
+                                </div>
+                            </div>
                             </form>
-                            <script>
-                                function pay_now()
-                                {
-                                    var name=jQuery('#name').val();
-                                    var amt=jQuery('#amt').val();
-                                    
-                                    jQuery.ajax({
-                                        type:'post',
-                                        url:'payment_process.php',
-                                        data:"amt="+amt+"&name="+name,
-                                        success:function(result){
-                                        var options = {
+                            <?php
+                            $q1="SELECT `courier_id`,`courier_price`, `status` FROM `tbl_courier`";
+                            ?>
+
+                <script>
+                    function pay_now()
+                    {
+                        var name=jQuery('#name').val();
+                        var amt=jQuery('#amt').val();
+                        
+                        jQuery.ajax({
+                            type:'post',
+                            url:'payment_process.php',
+                            data:"amt="+amt+"&name="+name,
+                            success:function(result){
+                                var options = {
                                         "key": "rzp_test_5zwjxYHi3wvNyI", 
                                         "amount": amt*100, 
                                         "currency": "INR",
@@ -99,12 +114,15 @@ $uname=$r['username'];  //username from table field & $uname is a random name
                                     };
                                     var rzp1 = new Razorpay(options);
                                     rzp1.open();
-                                        }
-                                    });
-                                    
-                                    
-                                }
-                            </script>
+                            }
+                        });
+                        
+                        
+                    }
+                </script>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -113,12 +131,12 @@ $uname=$r['username'];  //username from table field & $uname is a random name
     </div>
 
     
-    <!--Footer
+    <!--Footer-->
     <div class="footer">
         <p>For Booking & Enquiries</p><br>
         <p>fastocouriers@gmail.com</p>
         <p class="copyright">Copyright © 2021</p>      
-    </div>-->
+    </div>
 
                             
 <!--PHP code for sweet alert-->     

@@ -362,7 +362,7 @@ span.price {
               type: "success"
         }).then(function(){
           //redirect to another page
-          window.location.href = "test.php";
+          window.location.href = "payment.php";
         });
     </script>
     <?php

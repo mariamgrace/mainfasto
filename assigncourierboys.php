@@ -236,13 +236,14 @@ else{
             $res= mysqli_query($con,"SELECT c.*, p.* FROM tbl_courier c, tbl_pickupdetails p WHERE c.pickup_id = p.pickup_id");//fetch data from database
             while($r = mysqli_fetch_array($res))
             {
+              
               $courier_weight=$r["courier_weight"];
               $courier_image=$r["courier_image"];
               $courier_cat=$r["courier_cat"];
               $pickup_date=$r["pickup_date"];
               $courier_price=$r["courier_price"];
             ?>
-            <form action="assigncourierboy.php" method="POST">
+            <form action="#" method="POST">
             <tr>     
                 <td><img src="images/<?php echo $courier_image;?>" height="100" width="100"/></td>
                 <td><b><?php echo $courier_cat;?></b></td>
@@ -294,11 +295,13 @@ else{
     <?php
           if(isset($_POST['applybtn']))
         {
+            $boyID=$_POST['courierboyname'];
             $results= mysqli_query($con,"SELECT `idnumber` FROM `tbl_courierboy`");//fetch data from database
             while($rest = mysqli_fetch_array($results))
             {
-                $cboyid=$r["idnumber"];
-                $applyquery="INSERT INTO `tbl_courier`(`assigned_cboy_id`) VALUES ('$cboyid')";
+                $cboyid=$rest["idnumber"];
+                $applyquery="INSERT INTO `tbl_courier`(`assigned_cboy_id`) VALUES ('$boyID')";
+                //$applyquery="UPDATE `tbl_courier` SET `assigned_cboy_id`='[$boyID]'";
                 $applyquery_run = mysqli_query($con,$applyquery);
                 if($applyquery_run)
                 {
