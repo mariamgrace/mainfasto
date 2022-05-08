@@ -29,7 +29,6 @@ else{
     <script src="js/sweetalert.js"></script>  
     <title>Assign Courier Boys</title>
     <link rel="icon" href="images/iconbox.png">
-
     <style>
         #viewtableid {
         font-family: "Poppins", sans-serif;
@@ -160,188 +159,185 @@ else{
 <!--Header-->
 <div class="top_navbar">
 		<div class="logo">FastoCouriers</div>
-	</div>
+</div>
 
 	<div class="sidebar">
-		<div class="sidebar_inner">
-		<ul>
-			<li>
-				<a href="staffdashboard.php">
-					<span class="icon"><i class="fa fa-qrcode"></i></span>
-					<span class="text">Dashboard</span>
-				</a>
-			</li>
-            <li>
-				<a href="staffprofile.php">
-					<span class="icon"><i class="fa fa-book"></i></span>
-					<span class="text">Profile</span>
-				</a>
-			</li>
-			<li>
-                <a href="#">
-					<span class="icon"><i class="fa fa-truck"></i></span>
-					<span class="text">Courier Boy</span>
-				</a>
-			</li>
-			<li>
-				<a href="leave.php">
-					<span class="icon"><i class="fa fa-calendar"></i></span>
-					<span class="text">Leave</span>
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<span class="icon"><i class="fa fa-question-circle"></i></span>
-					<span class="text">About</span>
-				</a>
-			</li>
-      <li>
-				<a href="#">
-					<span class="icon"><i class="fa fa-pen"></i></span>
-					<span class="text">Service</span>
-				</a>
-			</li>
-      <li>
-				<a href="logout.php">
-                    <span class="icon"><i class="fa fa-power-off" style="color:white;"></i></span>           
-					<span class="text">Logout</span>
-				</a>
-			</li>
-
-		</ul>
-		</div>
+    <div class="sidebar_inner">
+    <ul>
+        <li>
+            <a href="staffdashboard.php">
+            <span class="icon"><i class="fa fa-qrcode"></i></span>
+            <span class="text">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="staffprofile.php">
+            <span class="icon"><i class="fa fa-book"></i></span>
+            <span class="text">Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+            <span class="icon"><i class="fa fa-truck"></i></span>
+            <span class="text">Courier Boy</span>
+            </a>
+        </li>
+        <li>
+            <a href="leave.php">
+            <span class="icon"><i class="fa fa-calendar"></i></span>
+            <span class="text">Leave</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+            <span class="icon"><i class="fa fa-question-circle"></i></span>
+            <span class="text">About</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+            <span class="icon"><i class="fa fa-pen"></i></span>
+            <span class="text">Service</span>
+            </a>
+        </li>
+        <li>
+            <a href="logout.php">
+            <span class="icon"><i class="fa fa-power-off" style="color:white;"></i></span>           
+            <span class="text">Logout</span>
+            </a>
+        </li>
+    </ul>
+    </div>
 	</div>
-
-
-<!--RIGHT SIDE CODE-->
 
 <!--TABLE TO VIEW ALL CUSTOMERS-->
 <section class="viewtable">
     <center>
-        <h1 style="margin-top:2%"><b>Couriers</b></h1>
+    <h1 style="margin-top:2%"><b>Couriers</b></h1>
+    <table id="viewtableid" style="margin-top:3%">
+    <tr>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;Courier</th>
+        <th>&nbsp;&nbsp;&nbsp;Category</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOP</th>
+        <th>&nbsp;&nbsp;&nbsp;Sender</th>
+        <th>&nbsp;&nbsp;Pickup Point</th>
+        <th>&nbsp;&nbsp;&nbsp;Weight</th>
+        <th>&nbsp;&nbsp;&nbsp;Price</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;Assign</th>
+        <th colspan="2">&nbsp;&nbsp;&nbsp;Action</th>
+    </tr>
 
-        <table id="viewtableid" style="margin-top:3%">
-        <tr>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;Courier</th>
-            <th>&nbsp;&nbsp;&nbsp;Category</th>
-            <th>&nbsp;&nbsp;&nbsp;Pickup</th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;Weight</th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;Price</th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;Assign</th>
-            <th colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action</th>
-        </tr>
-<!--PHP CONNECTION & FETCH CUSTOMER DETAILS-->
-            <?php
-            $res= mysqli_query($con,"SELECT c.*, p.* FROM tbl_courier c, tbl_pickupdetails p WHERE c.pickup_id = p.pickup_id");//fetch data from database
-            while($r = mysqli_fetch_array($res))
-            {
-              
-              $courier_weight=$r["courier_weight"];
-              $courier_image=$r["courier_image"];
-              $courier_cat=$r["courier_cat"];
-              $pickup_date=$r["pickup_date"];
-              $courier_price=$r["courier_price"];
-            ?>
-            <form action="#" method="POST">
-            <tr>     
-                <td><img src="images/<?php echo $courier_image;?>" height="100" width="100"/></td>
-                <td><b><?php echo $courier_cat;?></b></td>
-                <td><b><?php echo $pickup_date;?></b></td>
-                <td><b><?php 
-                if($courier_weight=='1'){
-                  echo "Below 5 Kg";
-                }
-                else if($courier_weight=='2'){
-                  echo "6-9 Kg";
-                }
-                else{
-                  echo "10-15 Kg";
-                }
-                ?></b></td>
-               <td>
-                  <b style="color:red;">Rs.<?php echo $courier_price;?>/-</b>
-                </td>
-                <td>
-                    <div class="select">
-                        <select name="courierboyname">
-                        <option>Select</option>
-                            <?php 
-                            $sql= mysqli_query($con,"SELECT * FROM `tbl_courierboy`");
-    // use a while loop to fetch data from the $sql variable and individually display as an option
-                                while ($cboyname = mysqli_fetch_array($sql,MYSQLI_ASSOC)):;
-                                {
-                                    $courierboyid = $cboyname["idnumber"];
-                                    $courierboyname = $cboyname["fullname"];
-                                }
-                            ?>
-                            
-                            <option value="<?php echo $courierboyid;?>">
-                                <?php echo $courierboyname;// To show the courierboy name to the staff?>
-                            </option>
-                            <?php endwhile;// While loop must be terminated ?>
-                        </select>
-                    </div>
-                </td>
-                <td> <input type="submit" class="button-assignapprove" name="applybtn" value="Apply" /></td>
-                <td><button class="button-assignapprove assigncancel" name="cancelbtn">Cancel</button></td>
-            </tr>
-            </form>
-            <?php
-            }
-            ?>
-            
-    <!--PHP code for fetching idnumber from tbl_courierbot and insert it into assigned_cboy_id-->
+<!--PHP CONNECTION & FETCH COURIER DETAILS-->
     <?php
-          if(isset($_POST['applybtn']))
-        {
-            $boyID=$_POST['courierboyname'];
-            $results= mysqli_query($con,"SELECT `idnumber` FROM `tbl_courierboy`");//fetch data from database
-            while($rest = mysqli_fetch_array($results))
+    $res= mysqli_query($con,"SELECT c.*, p.* FROM tbl_courier c, tbl_pickupdetails p WHERE c.pickup_id = p.pickup_id");//fetch data from database
+    while($r = mysqli_fetch_array($res))
+    {
+        $courier_id=$r["courier_id"];
+        $courier_weight=$r["courier_weight"];
+        $courier_image=$r["courier_image"];
+        $courier_cat=$r["courier_cat"];
+        $pickup_date=$r["pickup_date"];
+        $pickup_sender=$r["pickup_sender"];
+        $pickup_loc=$r["pickup_loc"];
+        $courier_price=$r["courier_price"];
+    ?>
+    <form action="assigncourierboys.php?action=idd&id=<?php echo $courier_id;?>" method="POST">
+    <tr>     
+        <td><img src="images/<?php echo $courier_image;?>" height="100" width="100"/></td>
+        <td><b><?php echo $courier_cat;?></b></td>
+        <td><b><?php echo $pickup_date;?></b></td>
+        <td><b><?php echo $pickup_sender;?></b></td>
+        <td><b><?php echo $pickup_loc;?></b></td>
+        <td><b><?php 
+        if($courier_weight=='1'){
+            echo "Below 5 Kg";
+        }
+        else if($courier_weight=='2'){
+            echo "6-9 Kg";
+        }
+        else{
+            echo "10-15 Kg";
+        }
+        ?></b></td>
+        <td>
+        <b style="color:red;">Rs.<?php echo $courier_price;?>/-</b>
+        </td>
+        <td>
+            <div class="select">
+            <select name="courierboyname">
+            <option>Select</option>
+            <?php 
+            $sql= mysqli_query($con,"SELECT * FROM `tbl_courierboy`");
+            // use a while loop to fetch data from the $sql variable and individually display as an option
+            while ($cboyname = mysqli_fetch_array($sql,MYSQLI_ASSOC)):;
             {
-                $cboyid=$rest["idnumber"];
-                //$applyquery="INSERT INTO `tbl_courier`(`assigned_cboy_id`) VALUES ('$boyID')";
-                $applyquery="UPDATE tbl_courier SET assigned_cboy_id='$boyID'";
-                //$sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
-                $applyquery_run = mysqli_query($con,$applyquery);
-                if($applyquery_run)
-                {
-                    $_SESSION['status']="Courier Assigned Successfully";
-                    $_SESSION['status_code']="success";
-                    //echo '<script type="text/javascript"> alert("User Rgistered Successfully!!!Go To Login..!!")</script>';                                      
-                }
-                else
-                {
-                    $_SESSION['status']="Assign Failed";
-                    $_SESSION['status_code']="error";
-                    //echo '<script type="text/javascript">alert("ERROR!!Try Again!!")</script>';
-                }
+            $courierboyid = $cboyname["idnumber"];
+            $courierboyname = $cboyname["fullname"];
             }
+            ?>
+            <option value="<?php echo $courierboyid;?>">
+            <?php echo $courierboyname;// To show the courierboy name to the staff?>
+            </option>
+            <?php endwhile;// While loop must be terminated ?>
+            </select>
+            </div>
+        </td>
+        <td><input type="submit" class="button-assignapprove" name="applybtn" value="Apply" /></td>
+    </tr>
+    </form>
+    <?php
+    }
+    ?>
+            
+<!--PHP code for fetching idnumber from tbl_courierbot and insert it into assigned_cboy_id-->
+    <?php
+        if(isset($_GET['action'])== "idd")
+        {
+        $couid = $_GET['id'];
+        $sql4 = "SELECT `idnumber` FROM `tbl_courierboy`";
+        $row4 = mysqli_query($con, $sql4);
+        if($res4 = mysqli_fetch_assoc($row4))
+        {
+        $boyID=$_POST['courierboyname'];
+        }
+        $sql6 = "INSERT INTO `tbl_assigncourier`(`assign_courierid`,`assigned_courierboy`) VALUES ('$couid','$boyID')";
+        if(mysqli_query($con, $sql6))
+        {
+        $_SESSION['status']="Courier Assigned Successfully";
+        $_SESSION['status_code']="success";
+        //echo '<script type="text/javascript"> alert("User Rgistered Successfully!!!Go To Login..!!")</script>';    
+        }
+        else
+        {
+        $_SESSION['status']="Assign Failed";
+        $_SESSION['status_code']="error";
+        //echo '<script type="text/javascript">alert("ERROR!!Try Again!!")</script>';
+        }
         }
     ?>
 
-                            
     <!--PHP code for sweet alert-->     
     <?php
-      if(isset($_SESSION['status']) && $_SESSION['status'] !='')
-      {
+    if(isset($_SESSION['status']) && $_SESSION['status'] !='')
+    {
     ?>
     <script>
-            swal({
-                  title: "<?php echo $_SESSION['status']; ?>",
-                  //text: "You clicked the button!",
-                  icon: "<?php echo $_SESSION['status_code']; ?>",
-                  button: "Ok",
-            });
-         </script>
-         <?php
-         unset($_SESSION['status']);
-         }
-         ?>
+    swal({
+    title: "<?php echo $_SESSION['status']; ?>",
+    //text: "You clicked the button!",
+    icon: "<?php echo $_SESSION['status_code']; ?>",
+    button: "Ok",
+    });
+    </script>
+    <?php
+    unset($_SESSION['status']);
+    }
+    ?>
         </table>
     </center>
     </section>
 
-  </body>
+</body>
 </html>
 
 <?php
