@@ -173,7 +173,7 @@ span.price {
             <div class="row">
               <div class="col-50">
                 <label for="pickupdate">Pickup Date</label>
-                <input type="date" name="pickupdate" id="pickupdate" placeholder="Prefered pickup date" />
+                <input type="date" name="pickupdate" id="pickupdate" placeholder="Prefered pickup date" min="<?php echo date('Y-m-d') ?>" />
               </div>
               <div class="col-50">
                 <label for="pickup">Pickup Location</label>
@@ -191,16 +191,16 @@ span.price {
             <input type="text" id="pickupinstructions" name="pickupinstructions" placeholder="Landmark">
             <div class="row">
               <div class="col-50">
-                <label for="pickupcontact">Mobile</label>
-                <input type="text" name="pickupcontact" id="pickupcontact" placeholder="Enter Phone Number" />
+              <label for="pickupcontact">Mobile</label>
+              <input type="text" name="pickupcontact" id="pickupcontact" placeholder="Enter Phone Number" />
               </div>
               <div class="col-50">
-                <label for="pickup">Address Type</label>
-                <select name="pickupaddrtype" required>
-                  <option value="" disabled selected>Choose</option>
-                  <option value="Home">Home</option>
-                  <option value="Office">Office</option>
-                </select>
+              <label for="pickup">Address Type</label>
+              <select name="pickupaddrtype" required>
+              <option value="" disabled selected>Choose</option>
+              <option value="Home">Home</option>
+              <option value="Office">Office</option>
+              </select>
               </div>
             </div>
           </div>
@@ -259,21 +259,6 @@ span.price {
               <input type="text"  name="tot_amount" id="tot_amount" readonly>
               </div>
             </div>
-            <!--<div class="row">
-              <div class="col-50">
-              <label for="deliveryservice"><b>Choose delivery service</b></label>
-              <select name="deliveryservice" onchange="calculateTotalAmount(this.value)" required>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="100">On demand Delivery</option>
-                <option value="200">Scheduled Delivery</option>
-              </select>
-              </div>
-              <div class="col-50">
-              <label><b>Total Amount</b></label>
-              <input type="text"  name="total_amount" id="total_amount" readonly>
-              </div>
-            </div>-->
-              
             <label for="packagesize"><b>Upload Package Image</b></label>
             <label  class="uploadimage" for="upload">Choose file</label>
             <input type="file" id="upload" name="upload" accept="image/x-png,image/jpeg" hidden/>
@@ -294,76 +279,75 @@ span.price {
  
     <!--PHP code for Pickup, Delivery, Package-->
     <?php
-          if(isset($_POST['order']))
-          {
-            $pickuplocation=$_POST['pickuplocation'];
-            $pickupaddress=$_POST['pickupaddress'];
-            $pickupinstructions=$_POST['pickupinstructions'];
-            $pickupname=$_POST['pickupname'];
-            $pickupcontact=$_POST['pickupcontact'];
-            $pickupaddrtype=$_POST['pickupaddrtype'];
-            $pickupdate=$_POST['pickupdate'];
+    if(isset($_POST['order']))
+    {
+      $pickuplocation=$_POST['pickuplocation'];
+      $pickupaddress=$_POST['pickupaddress'];
+      $pickupinstructions=$_POST['pickupinstructions'];
+      $pickupname=$_POST['pickupname'];
+      $pickupcontact=$_POST['pickupcontact'];
+      $pickupaddrtype=$_POST['pickupaddrtype'];
+      $pickupdate=$_POST['pickupdate'];
 
-            $deliverylocation=$_POST['deliverylocation'];
-            $deliveryaddress=$_POST['deliveryaddress'];
-            $deliveryinstructions=$_POST['deliveryinstructions'];
-            $deliveryname=$_POST['deliveryname'];
-            $deliverycontact=$_POST['deliverycontact'];
-            $deliveryaddrtype=$_POST['deliveryaddrtype'];
+      $deliverylocation=$_POST['deliverylocation'];
+      $deliveryaddress=$_POST['deliveryaddress'];
+      $deliveryinstructions=$_POST['deliveryinstructions'];
+      $deliveryname=$_POST['deliveryname'];
+      $deliverycontact=$_POST['deliverycontact'];
+      $deliveryaddrtype=$_POST['deliveryaddrtype'];
 
-            $category=$_POST['category'];
-            $packageweight=$_POST['packageweight'];
-            $tot_amount=$_POST['tot_amount'];
-            $upload=$_FILES['upload']['name'];
-            move_uploaded_file($_FILES['upload']['tmp_name'],"images/".$_FILES['upload']['name']);
+      $category=$_POST['category'];
+      $packageweight=$_POST['packageweight'];
+      $tot_amount=$_POST['tot_amount'];
+      $upload=$_FILES['upload']['name'];
+      move_uploaded_file($_FILES['upload']['tmp_name'],"images/".$_FILES['upload']['name']);
 
-            $query1="INSERT INTO `tbl_pickupdetails`(`pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile`, `pickup_date`, `status`) VALUES ('$pickuplocation','$pickupaddress','$pickupinstructions','$pickupname','$pickupaddrtype','$pickupcontact','$pickupdate','Pending')";
-            $query_run1 = mysqli_query($con,$query1);
-            $respickupdetails= mysqli_query($con,"SELECT pickup_id FROM `tbl_pickupdetails`");
-            while($r1 = mysqli_fetch_array($respickupdetails))
-              {
-              $pickup_id=$r1['pickup_id'];  
-              }
-                  
-            $query2="INSERT INTO `tbl_deliverydetails`(`delivery_loc`, `delivery_addr`, `delivery_ins`, `delivery_receiver`, `delivery_addrtype`, `delivery_mobile`, `status`) VALUES ('$deliverylocation','$deliveryaddress','$deliveryinstructions','$deliveryname','$deliveryaddrtype','$deliverycontact','Pending')";
-            $query_run2 = mysqli_query($con,$query2);
-            $resdeliverydetails= mysqli_query($con,"SELECT delivery_id FROM `tbl_deliverydetails`");
-            while($r2 = mysqli_fetch_array($resdeliverydetails))
-              {
-              $delivery_id=$r2['delivery_id'];  
-              }
-              
-            $query3="INSERT INTO `tbl_courier`(`pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`) VALUES ('$pickup_id','$delivery_id','$upload','$category','$packageweight','$tot_amount','Pending')";
-            $query_run3 = mysqli_query($con,$query3);
-                  if($query_run3)
-                   {
-                   $_SESSION['status']="Place Your Order";
-                   $_SESSION['status_code']="success";
-                   //echo '<script type="text/javascript"> alert("User Rgistered Successfully!!!Go To Login..!!")</script>';                                      
-                   }
-                   else
-                   {
-                      $_SESSION['status']="Unsuccessfull";
-                      $_SESSION['status_code']="error";
-                      //echo '<script type="text/javascript">alert("ERROR!!Try Again!!")</script>';
-                   }
-          }
+      $query1="INSERT INTO `tbl_pickupdetails`(`pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile`, `pickup_date`, `status`) VALUES ('$pickuplocation','$pickupaddress','$pickupinstructions','$pickupname','$pickupaddrtype','$pickupcontact','$pickupdate','Pending')";
+      $query_run1 = mysqli_query($con,$query1);
+      $respickupdetails= mysqli_query($con,"SELECT pickup_id FROM `tbl_pickupdetails`");
+      while($r1 = mysqli_fetch_array($respickupdetails))
+        {
+        $pickup_id=$r1['pickup_id'];  
+        }         
+      $query2="INSERT INTO `tbl_deliverydetails`(`delivery_loc`, `delivery_addr`, `delivery_ins`, `delivery_receiver`, `delivery_addrtype`, `delivery_mobile`, `status`) VALUES ('$deliverylocation','$deliveryaddress','$deliveryinstructions','$deliveryname','$deliveryaddrtype','$deliverycontact','Pending')";
+      $query_run2 = mysqli_query($con,$query2);
+      $resdeliverydetails= mysqli_query($con,"SELECT delivery_id FROM `tbl_deliverydetails`");
+      while($r2 = mysqli_fetch_array($resdeliverydetails))
+        {
+        $delivery_id=$r2['delivery_id'];  
+        }
+        
+      $query3="INSERT INTO `tbl_courier`(`pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`) VALUES ('$pickup_id','$delivery_id','$upload','$category','$packageweight','$tot_amount','Pending')";
+      $query_run3 = mysqli_query($con,$query3);
+      if($query_run3)
+        {
+        $_SESSION['status']="Place Your Order";
+        $_SESSION['status_code']="success";
+        //echo '<script type="text/javascript"> alert("User Rgistered Successfully!!!Go To Login..!!")</script>';                                      
+        }
+        else
+        {
+          $_SESSION['status']="Unsuccessfull";
+          $_SESSION['status_code']="error";
+          //echo '<script type="text/javascript">alert("ERROR!!Try Again!!")</script>';
+        }
+    }
     ?>                
     <!--PHP code for sweet alert-->     
     <?php
-      if(isset($_SESSION['status']) && $_SESSION['status'] !='')
-      {
+    if(isset($_SESSION['status']) && $_SESSION['status'] !='')
+    {
     ?>
     <script>
-        swal({
-              title: "<?php echo $_SESSION['status']; ?>",
-              text: "Pay Now",
-              icon: "<?php echo $_SESSION['status_code']; ?>",
-              type: "success"
-        }).then(function(){
-          //redirect to another page
-          window.location.href = "payment.php";
-        });
+    swal({
+    title: "<?php echo $_SESSION['status']; ?>",
+    text: "Pay Now",
+    icon: "<?php echo $_SESSION['status_code']; ?>",
+    type: "success"
+    }).then(function(){
+    //redirect to another page
+    window.location.href = "payment.php";
+    });
     </script>
     <?php
     unset($_SESSION['status']);
@@ -382,6 +366,14 @@ function calculateAmount(val) {
         var divobj = document.getElementById('tot_amount');
         divobj.value = tot_price;
 }
+</script>
+
+<script>//SCRIPT TO CHECK END DATE VALIDATION
+  /*document.getElementById("pickupdate").onchange = function() 
+  {
+  var input = document.getElementById("pickupdate");
+  input.setAttribute("min", this.value);
+  }*/
 </script>
 
 </body>

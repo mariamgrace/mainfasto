@@ -2,7 +2,6 @@
 <?php
 include 'dbcon.php';
 session_start();
-
 if(isset($_SESSION["fastoSession"]) != session_id()){
   header("Location:index.php");
   die();
@@ -35,19 +34,19 @@ else{
 		<div class="sidebar_inner">
 		<ul>
 			<li>
-				<a href="staffdashboard.php">
+				<a href="courierboydashboard.php">
 					<span class="icon"><i class="fa fa-qrcode"></i></span>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
 			<li>
-				<a href="staffprofile.php">
+				<a href="courierboyprofile.php">
 					<span class="icon"><i class="fa fa-book"></i></span>
 					<span class="text">Profile</span>
 				</a>
 			</li>
 			<li>
-				<a href="leave.php">
+				<a href="courierboyleave.php">
 					<span class="icon"><i class="fa fa-calendar"></i></span>
 					<span class="text">Leave</span>
 				</a>
@@ -80,7 +79,6 @@ else{
 	<div class="icon-section">
 	<i class="fa fa-tasks" aria-hidden="true"></i><br>
 	<h2>Reports</h2>
-	<p>8</p>
 	</div>
 	<div class="detail-section">
 	<a href="#">More Info </a>
@@ -89,24 +87,23 @@ else{
 	<div class="dashbord dashbord-green">
 	<div class="icon-section">
 	<i class="fa fa-truck" aria-hidden="true"></i><br>
-	<h2>Assign Courier Boys</h2>
-			<?php                                      //PHP code to COUNT no. of couriers
-			include 'dbcon.php';
-			$countnumcouriers = "SELECT `courier_id` FROM `tbl_courier` ORDER BY `courier_id`";
-			$countnumcouriers_run = mysqli_query($con,$countnumcouriers);
-			$row = mysqli_num_rows($countnumcouriers_run);
-			?>
-			<p><?php echo $row  ?></p>
+	<h2>View Couriers</h2>
+		<?php //PHP code to COUNT no. of couriers
+		include 'dbcon.php';
+		$countnumcouriers = "SELECT `courier_id` FROM `tbl_courier` ORDER BY `courier_id`";
+		$countnumcouriers_run = mysqli_query($con,$countnumcouriers);
+		$row = mysqli_num_rows($countnumcouriers_run);
+		?>
+		<p><?php echo $row  ?></p>
 	</div>
 	<div class="detail-section">
-	<a href="assigncourierboys.php">More Info </a>
+	<a href="viewassignedcouriers.php">More Info </a>
 	</div>
 	</div>
 	<div class="dashbord dashbord-orange">
 	<div class="icon-section">
 	<i class="fa fa-comments" aria-hidden="true"></i><br>
 	<h2>Queries</h2>
-	<p>96</p>
 	</div>
 	<div class="detail-section">
 	<a href="#">More Info </a>
