@@ -17,7 +17,7 @@ else{
 
 ?>
 
-<!--PHP CODE FOR UPDATE PASSWORD-->
+<!--PHP CODE FOR UPDATE PASSWORD--->
 <?php
     if(isset($_POST['update']))
     {
