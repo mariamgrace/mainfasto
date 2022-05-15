@@ -174,12 +174,12 @@ else{
     $re=mysqli_fetch_array($res1);
     $reid = $re["id"];
 
-    $res2 = mysqli_query($con,"SELECT `courierboy_id`, `phone`, `dob`, `doj` FROM `tbl_courierboy` WHERE `idnumber`='$reid'");
+    $res2 = mysqli_query($con,"SELECT `courierboy_id`, `phone`, `fullname`, `dob`, `doj` FROM `tbl_courierboy` WHERE `idnumber`='$reid'");
     $re1=mysqli_fetch_array($res2);
   ?>
   <div class="wrapper">
       <div class="left">
-          <h2><span><b><?php echo $uname; ?></b></span></h2>
+          <h2><span><b><?php echo $re1["fullname"];?></b></span></h2>
           <h4>Designation: <span><?php echo $role; ?></span></h4>
           <button onclick="location.href = 'staffpasswordreset.php';"class="resetbutton" style="vertical-align:middle"><span>Reset Password</span></button>
       </div>

@@ -223,6 +223,7 @@ else{
         <th>&nbsp;&nbsp;Pickup Ins</th>
         <th>&nbsp;&nbsp;Address Type</th>
         <th>&nbsp;&nbsp;Mobile</th>
+        <th>&nbsp;&nbsp;Status</th>
         <th colspan="2">&nbsp;&nbsp;&nbsp;Action</th>
     </tr>
 
@@ -234,7 +235,7 @@ while($rc= mysqli_fetch_array($rr))
 {
 $ascid=$rc["assign_courierid"];
 
-    $res = mysqli_query($con,"SELECT `courier_id`, `pickup_id`,`courier_image`, `courier_cat`, `courier_weight`, `courier_price` FROM `tbl_courier` WHERE `courier_id`='$ascid'");
+    $res = mysqli_query($con,"SELECT `courier_id`, `pickup_id`,`courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status` FROM `tbl_courier` WHERE `courier_id`='$ascid'");
     while($r= mysqli_fetch_array($res))
     {
         $couid=$r["courier_id"];
@@ -271,7 +272,7 @@ $ascid=$rc["assign_courierid"];
         }
         ?></b></td>
         <td>
-        <b style="color:red;">Rs.<?php echo $courier_price;?>/-</b>
+        <b style="color:green;">Rs.<?php echo $courier_price;?>/-</b>
         </td>
         <td><b><?php echo $pick_dt;?></b></td>
         <td><b><?php echo $pick_sed;?></b></td>
@@ -280,6 +281,7 @@ $ascid=$rc["assign_courierid"];
         <td><b><?php echo $pick_ins;?></b></td>
         <td><b><?php echo $pick_addty;?></b></td>
         <td><b><?php echo $pick_ph;?></b></td>
+        <td><b style="color:red;"><?php echo $r["status"];?></b></td>
         <td><input type="submit" class="button-assignapprove" name="applybtn" value="Apply" /></td>
     </tr>
     </form>
@@ -300,19 +302,6 @@ $ascid=$rc["assign_courierid"];
         {
         $boyID=$_POST['courierboyname'];
         }
-        /*$sql6 = "INSERT INTO `tbl_assigncourier`(`assign_courierid`,`assigned_courierboy`) VALUES ('$couid','$boyID')";
-        if(mysqli_query($con, $sql6))
-        {
-        $_SESSION['status']="Courier Assigned Successfully";
-        $_SESSION['status_code']="success";
-        //echo '<script type="text/javascript"> alert("User Rgistered Successfully!!!Go To Login..!!")</script>';    
-        }
-        else
-        {
-        $_SESSION['status']="Assign Failed";
-        $_SESSION['status_code']="error";
-        //echo '<script type="text/javascript">alert("ERROR!!Try Again!!")</script>';
-        }*/
         }
     ?>
 

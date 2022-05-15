@@ -30,6 +30,10 @@ else{
   <link rel="stylesheet" href="css/courier.css">
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script src="js/sweetalert.js"></script>  
+
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <style>
 body {
   font-family: Arial;
@@ -169,11 +173,11 @@ span.price {
           <div class="col-50">
            <br> <h3>Pickup</h3><br>
             <label for="pickupname"><i class="fa fa-user"></i> Senders Name</label>
-            <input type="text" name="pickupname" id="pickupname" placeholder="Enter your Name">
+            <input type="text" class="form-control pickupname" name="pickupname" id="pickupname" placeholder="Enter your Name" required>
             <div class="row">
               <div class="col-50">
                 <label for="pickupdate">Pickup Date</label>
-                <input type="date" name="pickupdate" id="pickupdate" placeholder="Prefered pickup date" min="<?php echo date('Y-m-d') ?>" />
+                <input type="date" name="pickupdate" id="pickupdate" placeholder="Prefered pickup date" min="<?php echo date('Y-m-d') ?>" required/>
               </div>
               <div class="col-50">
                 <label for="pickup">Pickup Location</label>
@@ -186,20 +190,20 @@ span.price {
               </div>
             </div>
             <label for="pickupaddress"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="pickupaddress" name="pickupaddress" placeholder="542 W. 15th Street">
+            <input type="text" id="pickupaddress" name="pickupaddress" placeholder="542 W. 15th Street" required>
             <label for="pickupinstructions"><i class="fa fa-institution"></i>Nearest Landmark</label>
-            <input type="text" id="pickupinstructions" name="pickupinstructions" placeholder="Landmark">
+            <input type="text" class="form-control pickupinstructions" id="pickupinstructions" name="pickupinstructions" placeholder="Landmark" required>
             <div class="row">
               <div class="col-50">
               <label for="pickupcontact">Mobile</label>
-              <input type="text" name="pickupcontact" id="pickupcontact" placeholder="Enter Phone Number" />
+              <input type="text" class="form-control pickupcontact" name="pickupcontact" id="pickupcontact" placeholder="Enter Phone Number" required />
               </div>
               <div class="col-50">
               <label for="pickup">Address Type</label>
               <select name="pickupaddrtype" required>
               <option value="" disabled selected>Choose</option>
-              <option value="Home">Home</option>
-              <option value="Office">Office</option>
+              <option value="Home">Home(Anytime)</option>
+              <option value="Office">Office(Between 9am-6pm)</option>
               </select>
               </div>
             </div>
@@ -208,11 +212,11 @@ span.price {
           <div class="col-50">
             <br><h3>Delivery</h3><br>
             <label for="deliveryname"><i class="fa fa-user"></i> Receivers Name</label>
-            <input type="text" name="deliveryname" id="deliveryname" placeholder="Enter Recepient Name">
+            <input type="text" class="form-control deliveryname"  name="deliveryname" id="deliveryname" placeholder="Enter Recepient Name" required>
             <div class="row">
               <div class="col-50">
                 <label for="deliverycontact">Mobile</label>
-                <input type="text" name="deliverycontact" id="deliverycontact" placeholder="Recepient Phone number" />
+                <input type="text" class="form-control deliverycontact" name="deliverycontact" id="deliverycontact" placeholder="Recepient Phone number" required />
               </div>
               <div class="col-50">
                 <label for="delivery">Delivery Location</label>
@@ -225,18 +229,18 @@ span.price {
               </div>
             </div>
             <label for="deliveryaddress">Address</label>
-            <input type="text" name="deliveryaddress" id="deliveryaddress" placeholder="Enter delivery address">
+            <input type="text" name="deliveryaddress" id="deliveryaddress" placeholder="Enter delivery address" required>
             <div class="row">
               <div class="col-50">
                 <label for="deliveryinstructions">Nearest Landmark</label>
-                <input type="text" name="deliveryinstructions" id="deliveryinstructions" placeholder="Nearest landmark" />
+                <input type="text" class="form-control deliveryinstructions" name="deliveryinstructions" id="deliveryinstructions" placeholder="Nearest landmark" required />
               </div>
               <div class="col-50">
                 <label for="delivery">Address Type</label>
                 <select name="deliveryaddrtype" required>
                   <option value="" disabled selected>Choose</option>
-                  <option value="Home">Home</option>
-                  <option value="Office">Office</option>
+                  <option value="Home">Home(Anytime)</option>
+                  <option value="Office">Office(Between 9am-6pm)</option>
                 </select>
               </div>
             </div>
@@ -256,7 +260,7 @@ span.price {
               </div>
               <div class="col-50">
               <label><b>Amount</b></label>
-              <input type="text"  name="tot_amount" id="tot_amount" readonly>
+              <input type="text"  name="tot_amount" id="tot_amount" readonly >
               </div>
             </div>
             <label for="packagesize"><b>Upload Package Image</b></label>
@@ -264,7 +268,7 @@ span.price {
             <input type="file" id="upload" name="upload" accept="image/x-png,image/jpeg" hidden/>
             <br>
             <label for="packagesize">Courier Category</label>
-            <input type="checkbox" id="checkbox-1" name="category" value="Document" />
+            <input type="checkbox" id="checkbox-1" name="category" value="Document"  />
             <label for="checkbox-1">Documents</label>
             <input type="checkbox" id="checkbox-2" name="category" value="Medical" />
             <label for="checkbox-2">Medical</label>
@@ -357,23 +361,41 @@ span.price {
   </div>
 </div>
 
+
 <!--JS FOR CALCULATIONS-->
 <script>
-//Weight Calculation
-function calculateAmount(val) {
+function calculateAmount(val) { //Character Validation
         var tot_price = val * 100;
-        /*display the result*/
         var divobj = document.getElementById('tot_amount');
         divobj.value = tot_price;
 }
-</script>
-
-<script>//SCRIPT TO CHECK END DATE VALIDATION
-  /*document.getElementById("pickupdate").onchange = function() 
-  {
-  var input = document.getElementById("pickupdate");
-  input.setAttribute("min", this.value);
-  }*/
+$('.pickupname,.deliveryname').keyup(function() { //Character Validation
+$('span.error-keyup-2').remove();
+var inputVal = $(this).val();
+var characterReg = /^\s*[a-zA-Z,\s]+\s*$/;
+if(!characterReg.test(inputVal)) {
+    $(this).after('<span class="error error-keyup-2" style="color:red">No special characters and numbers allowed.</span>');
+}
+});
+$('.deliveryinstructions,.pickupinstructions').keyup(function() { //Character Validation
+$('span.error-keyup-2').remove();
+var inputVal = $(this).val();
+var characterReg = /^\s*[a-zA-Z,\s]+\s*$/;
+if(!characterReg.test(inputVal)) {
+    $(this).after('<span class="error error-keyup-2" style="color:red">Enter valid character input</span>');
+}
+});
+$('.deliverycontact,.pickupcontact').keyup(function() { //Phone number validation
+$('span.error-keyup-2').remove();
+var inputVal = $(this).val();
+var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  if(!phoneno.test(inputVal)) {
+      $(this).after('<span class="error error-keyup-2" style="color:red"> Number must be 10 digit </span>');
+  }
+if(inputVal.charAt(0)!="9" && inputVal.charAt(0)!="8" && inputVal.charAt(0)!="7" ) {
+    $(this).after('<span class="error error-keyup-2" style="color:red"> Enter a valid phone number. </span>');
+}
+});
 </script>
 
 </body>
