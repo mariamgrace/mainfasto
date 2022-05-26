@@ -78,8 +78,6 @@ else{
         height: 50px;
         border: none;
         }
-
-
         /* Button effect #7 */
         .btn-effect-7{
             color:#fff;
@@ -120,7 +118,6 @@ else{
             border: 5px solid black;
             border-radius: 3px;
         }
-        
         .select {
             position: relative;
             display: block;
@@ -151,57 +148,55 @@ else{
       <i class="fas fa-bars" id="nav-toggler"></i>
       <div>
         <i class="fas fa-user-alt"></i>
-        <span><b><?php
-	echo $role;
-	?></b> </span>
+        <span><b><?php echo $role;?></b></span>
       </div>
     </header>
 
 
 <!--Header-->
 <div class="top_navbar">
-		<div class="logo">FastoCouriers</div>
+	<div class="logo">FastoCouriers</div>
 </div>
 
 	<div class="sidebar">
     <div class="sidebar_inner">
     <ul>
-        <li>
-            <a href="courierboydashboard.php">
-            <span class="icon"><i class="fa fa-qrcode"></i></span>
-            <span class="text">Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-            <span class="icon"><i class="fa fa-book"></i></span>
-            <span class="text">Profile</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-            <span class="icon"><i class="fa fa-truck"></i></span>
-            <span class="text">Courier Boy</span>
-            </a>
-        </li>
-        <li>
-            <a href="courierboyleave.php">
-            <span class="icon"><i class="fa fa-calendar"></i></span>
-            <span class="text">Leave</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-            <span class="icon"><i class="fa fa-pen"></i></span>
-            <span class="text">Service</span>
-            </a>
-        </li>
-        <li>
-            <a href="logout.php">
-            <span class="icon"><i class="fa fa-power-off" style="color:white;"></i></span>           
-            <span class="text">Logout</span>
-            </a>
-        </li>
+    <li>
+        <a href="courierboydashboard.php">
+        <span class="icon"><i class="fa fa-qrcode"></i></span>
+        <span class="text">Dashboard</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+        <span class="icon"><i class="fa fa-book"></i></span>
+        <span class="text">Profile</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+        <span class="icon"><i class="fa fa-truck"></i></span>
+        <span class="text">Courier Boy</span>
+        </a>
+    </li>
+    <li>
+        <a href="courierboyleave.php">
+        <span class="icon"><i class="fa fa-calendar"></i></span>
+        <span class="text">Leave</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+        <span class="icon"><i class="fa fa-pen"></i></span>
+        <span class="text">Service</span>
+        </a>
+    </li>
+    <li>
+        <a href="logout.php">
+        <span class="icon"><i class="fa fa-power-off" style="color:white;"></i></span>           
+        <span class="text">Logout</span>
+        </a>
+    </li>
     </ul>
     </div>
 	</div>
@@ -212,50 +207,50 @@ else{
     <h1 style="margin-top:2%"><b></b></h1>
     <table id="viewtableid" style="margin-top:3%; margin-left:10%">
     <tr>
-        <th>&nbsp;&nbsp;&nbsp;&nbsp;Courier</th>
-        <th>&nbsp;&nbsp;&nbsp;Category</th>
-        <th>&nbsp;&nbsp;&nbsp;Weight</th>
-        <th>&nbsp;&nbsp;&nbsp;Price</th>
-        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOP</th>
-        <th>&nbsp;&nbsp;&nbsp;Sender</th>
-        <th>&nbsp;&nbsp;Pickup Loc</th>
-        <th>&nbsp;&nbsp;Pickup Addr</th>
-        <th>&nbsp;&nbsp;Pickup Ins</th>
-        <th>&nbsp;&nbsp;Address Type</th>
-        <th>&nbsp;&nbsp;Mobile</th>
-        <th>&nbsp;&nbsp;Status</th>
-        <th colspan="2">&nbsp;&nbsp;&nbsp;Action</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;Courier</th>
+    <th>&nbsp;&nbsp;&nbsp;Category</th>
+    <th>&nbsp;&nbsp;&nbsp;Weight</th>
+    <th>&nbsp;&nbsp;&nbsp;Price</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOP</th>
+    <th>&nbsp;&nbsp;&nbsp;Sender</th>
+    <th>&nbsp;&nbsp;Pickup Loc</th>
+    <th>&nbsp;&nbsp;Pickup Addr</th>
+    <th>&nbsp;&nbsp;Pickup Ins</th>
+    <th>&nbsp;&nbsp;Address Type</th>
+    <th>&nbsp;&nbsp;Mobile</th>
+    <th>&nbsp;&nbsp;Update</th>
+    <th>&nbsp;&nbsp;Status</th>
+    <th colspan="2">&nbsp;&nbsp;&nbsp;Action</th>
     </tr>
 
-<!--PHP CONNECTION & FETCH COURIER DETAILS-->
+    <!--PHP CONNECTION & FETCH COURIER DETAILS-->
     <?php
-
-$rr= mysqli_query($con,"SELECT `assign_courierid` FROM `tbl_assigncourier` WHERE `assigned_courierboy`='$uid'");
-while($rc= mysqli_fetch_array($rr))
-{
-$ascid=$rc["assign_courierid"];
-
+    $rr= mysqli_query($con,"SELECT `assign_courierid` FROM `tbl_assigncourier` WHERE `assigned_courierboy`='$uid'");
+    while($rc= mysqli_fetch_array($rr))
+    {
+    $ascid=$rc["assign_courierid"];
     $res = mysqli_query($con,"SELECT `courier_id`, `pickup_id`,`courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status` FROM `tbl_courier` WHERE `courier_id`='$ascid'");
     while($r= mysqli_fetch_array($res))
     {
-        $couid=$r["courier_id"];
-        $pickid = $r["pickup_id"];
-        $courier_image=$r["courier_image"];
-        $courier_cat=$r["courier_cat"];
-        $courier_weight=$r["courier_weight"];
-        $courier_price=$r["courier_price"];
+    $couid=$r["courier_id"];
+    $pickid = $r["pickup_id"];
+    $courier_image=$r["courier_image"];
+    $courier_cat=$r["courier_cat"];
+    $courier_weight=$r["courier_weight"];
+    $courier_price=$r["courier_price"];
 
-        $rcc= mysqli_query($con,"SELECT `pickup_id`, `pickup_date`, `pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile` FROM `tbl_pickupdetails` WHERE `pickup_id`='$pickid ' AND `status`='Pending'");
-        while($rrc= mysqli_fetch_array($rcc))
-        {
-        $pick_dt=$rrc["pickup_date"];
-        $pick_sed=$rrc["pickup_sender"];
-        $pick_loc=$rrc["pickup_loc"];
-        $pick_addr=$rrc["pickup_addr"];
-        $pick_ins=$rrc["pickup_ins"];
-        $pick_addty=$rrc["pickup_addrtype"];
-        $pick_ph=$rrc["pickup_mobile"];
+    $rcc= mysqli_query($con,"SELECT `pickup_id`, `pickup_date`, `pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile` FROM `tbl_pickupdetails` WHERE `pickup_id`='$pickid ' AND `status`='Pending'");
+    while($rrc= mysqli_fetch_array($rcc))
+    {
+    $pick_dt=$rrc["pickup_date"];
+    $pick_sed=$rrc["pickup_sender"];
+    $pick_loc=$rrc["pickup_loc"];
+    $pick_addr=$rrc["pickup_addr"];
+    $pick_ins=$rrc["pickup_ins"];
+    $pick_addty=$rrc["pickup_addrtype"];
+    $pick_ph=$rrc["pickup_mobile"];
     ?>
+
     <form action="viewassignedcouriers.php?action=idd&id=<?php echo $couid;?>" method="POST">
     <tr>     
         <td><img src="images/<?php echo $courier_image;?>" height="100" width="100"/></td>
@@ -281,30 +276,49 @@ $ascid=$rc["assign_courierid"];
         <td><b><?php echo $pick_ins;?></b></td>
         <td><b><?php echo $pick_addty;?></b></td>
         <td><b><?php echo $pick_ph;?></b></td>
+        <td>
+            <div class="select">
+            <select name="courierboyname">
+            <option>Select</option>
+            <?php 
+            $sql= mysqli_query($con,"SELECT * FROM `tbl_courierstatus`");
+            // use a while loop to fetch data from the $sql variable and individually display as an option
+            while ($cboyname = mysqli_fetch_array($sql,MYSQLI_ASSOC)):;
+            {
+            $courierboyid = $cboyname["idnumber"];
+            $courierboyname = $cboyname["fullname"];
+            }
+            ?>
+            <option value="<?php echo $courierboyid;?>">
+            <?php echo $courierboyname;// To show the courierboy name to the staff?>
+            </option>
+            <?php endwhile;// While loop must be terminated ?>
+            </select>
+            </div>
+        </td>
         <td><b style="color:red;"><?php echo $r["status"];?></b></td>
         <td><input type="submit" class="button-assignapprove" name="applybtn" value="Apply" /></td>
     </tr>
     </form>
+    
     <?php
     }
-}
-}
-    ?>
-            
-<!--PHP code for fetching idnumber from tbl_courierbot and insert it into assigned_cboy_id-->
+    }
+    }
+    ?>       
+    <!--PHP code for fetching idnumber from tbl_courierbot and insert it into assigned_cboy_id-->
     <?php
-        if(isset($_GET['action'])== "idd")
-        {
-        $couid = $_GET['id'];
-        $sql4 = "SELECT `idnumber` FROM `tbl_courierboy` where `idnumber` = '$couid'";
-        $row4 = mysqli_query($con, $sql4);
-        if($res4 = mysqli_fetch_assoc($row4))
-        {
-        $boyID=$_POST['courierboyname'];
-        }
-        }
+    if(isset($_GET['action'])== "idd")
+    {
+    $couid = $_GET['id'];
+    $sql4 = "SELECT `idnumber` FROM `tbl_courierboy` where `idnumber` = '$couid'";
+    $row4 = mysqli_query($con, $sql4);
+    if($res4 = mysqli_fetch_assoc($row4))
+    {
+    $boyID=$_POST['courierboyname'];
+    }
+    }
     ?>
-
     <!--PHP code for sweet alert-->     
     <?php
     if(isset($_SESSION['status']) && $_SESSION['status'] !='')
@@ -322,10 +336,9 @@ $ascid=$rc["assign_courierid"];
     unset($_SESSION['status']);
     }
     ?>
-        </table>
+    </table>
     </center>
-    </section>
-
+</section>
 </body>
 </html>
 

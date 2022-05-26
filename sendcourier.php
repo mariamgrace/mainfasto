@@ -361,13 +361,12 @@ span.price {
   </div>
 </div>
 
-
 <!--JS FOR CALCULATIONS-->
 <script>
 function calculateAmount(val) { //Character Validation
-        var tot_price = val * 100;
-        var divobj = document.getElementById('tot_amount');
-        divobj.value = tot_price;
+var tot_price = val * 100;
+var divobj = document.getElementById('tot_amount');
+divobj.value = tot_price;
 }
 $('.pickupname,.deliveryname').keyup(function() { //Character Validation
 $('span.error-keyup-2').remove();
@@ -389,9 +388,9 @@ $('.deliverycontact,.pickupcontact').keyup(function() { //Phone number validatio
 $('span.error-keyup-2').remove();
 var inputVal = $(this).val();
 var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-  if(!phoneno.test(inputVal)) {
-      $(this).after('<span class="error error-keyup-2" style="color:red"> Number must be 10 digit </span>');
-  }
+if(!phoneno.test(inputVal)) {
+    $(this).after('<span class="error error-keyup-2" style="color:red"> Number must be 10 digit </span>');
+}
 if(inputVal.charAt(0)!="9" && inputVal.charAt(0)!="8" && inputVal.charAt(0)!="7" ) {
     $(this).after('<span class="error error-keyup-2" style="color:red"> Enter a valid phone number. </span>');
 }
