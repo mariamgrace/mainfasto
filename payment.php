@@ -3,6 +3,12 @@
 include('dbcon.php');
 session_start();
 $var=$_SESSION['name'];
+$pick_id = $_SESSION['pick_id'];   // LATEST COURIER ID FETCHED HERE FROM sendcourier.php
+//echo $pick_id;
+$query = mysqli_query($con,"SELECT * FROM `tbl_courier` where courier_id='$pick_id'");
+while($row = mysqli_fetch_array($query)){
+    $tot_amt = $row['courier_price'];     // Amount of latest courier is fetched
+}
 $res= mysqli_query($con,"SELECT * FROM `tbl_login` where username='$var'");
 while($r = mysqli_fetch_array($res))
 {
@@ -68,7 +74,7 @@ else{
                                         <div class="form__div"> <input type="text" name="name" id="name" class="form-control" placeholder=" "> <label for="" class="form__label">Name</label> </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form__div"> <input type="text" name="amt" id="amt" class="form-control" placeholder=" "> <label for="" class="form__label">Amount</label> </div>
+                                        <div class="form__div"> <input type="text" name="amt" id="amt" class="form-control" value="<?php echo $tot_amt;?>" readonly> <label for="" class="form__label">Amount</label> </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="btn btn-primary payment" onclick="pay_now()"> Make Payment </div>
@@ -119,32 +125,6 @@ else{
         </div>
     </div>
 
-    
-    <!--Footer
-    <div class="footer">
-        <p>For Booking & Enquiries</p><br>
-        <p>fastocouriers@gmail.com</p>
-        <p class="copyright">Copyright © 2021</p>      
-    </div>-->
-
-                            
-<!--PHP code for sweet alert-->     
-      <?php
-      if(isset($_SESSION['status']) && $_SESSION['status'] !='')
-      {
-   ?>
-      <script>
-         swal({
-               title: "<?php echo $_SESSION['status']; ?>",
-               //text: "You clicked the button!",
-               icon: "<?php echo $_SESSION['status_code']; ?>",
-               button: "Ok. Done!",
-         });
-      </script>
-      <?php
-      unset($_SESSION['status']);
-      }
-      ?>
          </div>
       </div>
    </div>

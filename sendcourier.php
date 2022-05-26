@@ -325,6 +325,9 @@ span.price {
       $query_run3 = mysqli_query($con,$query3);
       if($query_run3)
         {
+          $pick_id = mysqli_insert_id($con); //TO GET THE CURRECT COURIER ID (LAST ROW IN TABLE)
+          $_SESSION['pick_id']=$pick_id;
+
         $_SESSION['status']="Place Your Order";
         $_SESSION['status_code']="success";
         //echo '<script type="text/javascript"> alert("User Rgistered Successfully!!!Go To Login..!!")</script>';                                      
