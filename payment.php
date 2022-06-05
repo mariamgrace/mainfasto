@@ -105,7 +105,7 @@ else{
                                             url:'payment_process.php',
                                             data:"payment_id="+response.razorpay_payment_id,
                                             success:function(result){
-                                                window.location.href="paysuccess.php";
+                                                window.location.href="usefull.php";
                                             }
                                         });
                                         }
