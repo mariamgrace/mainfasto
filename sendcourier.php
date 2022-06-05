@@ -353,7 +353,7 @@ span.price {
     type: "success"
     }).then(function(){
     //redirect to another page
-    window.location.href = "payment.php";
+    window.location.href = "usefull.php";
     });
     </script>
     <?php

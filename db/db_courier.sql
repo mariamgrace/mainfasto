@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2022 at 05:37 PM
+-- Generation Time: May 27, 2022 at 05:44 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -43,7 +43,8 @@ INSERT INTO `tbl_assigncourier` (`assign_id`, `assign_courierid`, `assigned_cour
 (33, 43, 81),
 (35, 58, 77),
 (37, 57, 77),
-(39, 64, 81);
+(39, 64, 81),
+(40, 67, 81);
 
 -- --------------------------------------------------------
 
@@ -78,7 +79,16 @@ INSERT INTO `tbl_courier` (`courier_id`, `pickup_id`, `delivery_id`, `courier_im
 (62, 51, 51, 'docimg1.jpg', 'Medical', 1, 100, 'Pending'),
 (63, 52, 52, 'fooditemimg1.jpg', 'Medical', 2, 200, 'Pending'),
 (64, 53, 53, 'fooditemimg1.jpg', 'Document', 2, 200, 'Pending'),
-(65, 54, 54, 'DOCS3.jpg', 'Medical', 2, 200, 'Pending');
+(65, 54, 54, 'DOCS3.jpg', 'Medical', 2, 200, 'Pending'),
+(67, 56, 56, 'docimg1.jpg', 'Fragile', 2, 200, 'Pending'),
+(70, 59, 59, 'Blank diagram - Page 1.png', 'Medical', 3, 300, 'Pending'),
+(71, 60, 60, 'Screenshot 2022-05-17 115530.png', 'Medical', 2, 200, 'Pending'),
+(72, 61, 61, 'Screenshot 2022-05-17 115530.png', 'Document', 1, 100, 'Pending'),
+(73, 62, 62, 'Screenshot (193).png', 'Medical', 3, 300, 'Pending'),
+(74, 63, 63, 'Screenshot 2022-05-17 115601.png', 'Medical', 3, 300, 'Pending'),
+(75, 64, 64, 'Blank diagram - Page 1.png', 'Document', 1, 100, 'Pending'),
+(76, 65, 65, 'Blank diagram - Page 1.png', 'Document', 1, 100, 'Pending'),
+(77, 66, 66, 'Screenshot 2022-05-17 115530.png', 'Medical', 3, 300, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -103,6 +113,17 @@ CREATE TABLE `tbl_courierboy` (
 INSERT INTO `tbl_courierboy` (`courierboy_id`, `idnumber`, `fullname`, `phone`, `dob`, `gender`, `doj`) VALUES
 (788899, 81, 'Ebin John', 2147483647, '1998-11-18', 'on', '2022-04-05'),
 (980056, 77, 'Sanju Abraham', 2147483647, '2007-06-17', 'on', '2022-03-31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_courierstatus`
+--
+
+CREATE TABLE `tbl_courierstatus` (
+  `courier_status_id` int(11) NOT NULL,
+  `courier_status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -137,7 +158,16 @@ INSERT INTO `tbl_deliverydetails` (`delivery_id`, `delivery_loc`, `delivery_addr
 (51, 'Kanjirappally', 'House no 289', 'Shopping mall', 'Angel', 'Home', '7844562234', 'Pending'),
 (52, 'Kanjirappally', 'House no 22', 'College Road', 'Rincy', 'Office', '7899654412', 'Pending'),
 (53, 'Kanjirappally', 'House no 22', 'College Road', 'Vaidehi', 'Office', '9088667566', 'Pending'),
-(54, 'Kanjirappally', 'House no 229', 'Near Shrine', 'Ammu', 'Office', '7899654419', 'Pending');
+(54, 'Kanjirappally', 'House no 229', 'Near Shrine', 'Ammu', 'Office', '7899654419', 'Pending'),
+(56, 'Kanjirappally', 'House no 229', 'College', 'Kevin Liza', 'Home', '7899654487', 'Pending'),
+(59, 'Erumeli', 'House no 221', 'College', 'John Thomas', 'Home', '7899654412', 'Pending'),
+(60, 'Pala', 'House no 27', 'Near Shrine', 'Aleena Elsa', 'Home', '7899654412', 'Pending'),
+(61, 'Erumeli', 'House no 2', 'asda', 'Liyan Susan', 'Office', '7899654412', 'Pending'),
+(62, 'Pala', 'House no 22', 'Near Shrine', 'Stephy', 'Office', '7844562234', 'Pending'),
+(63, 'Erumeli', 'House no 27', 'College Road', 'John Thomas', 'Office', '7844562234', 'Pending'),
+(64, 'Kanjirappally', 'House no 27', 'asda', 'John Thomas', 'Office', '7899654412', 'Pending'),
+(65, 'Kanjirappally', 'House no 27', 'asda', 'John Thomas', 'Office', '7899654412', 'Pending'),
+(66, 'Erumeli', 'House no 22', 'College Road', 'Aleena Elsa', 'Office', '7844562234', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -204,7 +234,15 @@ INSERT INTO `tbl_payment` (`id`, `name`, `amount`, `payment_status`, `payment_id
 (17, 'gloriya@gmail.com', 100, 'complete', 'pay_JRuet4c86cJr3f', '2022-05-06 12:41:26'),
 (18, 'gloriya@gmail.com', -100, 'failed', '', '2022-05-06 12:44:10'),
 (19, 'jerin@gmail.com', 200, 'complete', 'pay_JTUVIH8Aa2n8ra', '2022-05-10 12:25:15'),
-(20, 'ashmy@gmail.com', 200, 'complete', 'pay_JUDvoNv7daERJ1', '2022-05-12 08:51:21');
+(20, 'ashmy@gmail.com', 200, 'complete', 'pay_JUDvoNv7daERJ1', '2022-05-12 08:51:21'),
+(21, 'reshma@gmail.com', 300, 'failed', '', '2022-05-17 05:58:53'),
+(22, 'alice', 100, 'failed', '', '2022-05-26 05:23:38'),
+(23, 'alice', 100, 'failed', '', '2022-05-26 05:24:13'),
+(32, 'Priya Thomas', 100, 'failed', '', '2022-05-26 07:05:53'),
+(33, 'Staff2', 100, 'failed', '', '2022-05-26 07:34:10'),
+(34, 'sona', 300, 'failed', '', '2022-05-26 07:35:10'),
+(35, '', 300, 'complete', 'pay_JZwZbpDdZ3nxX0', '2022-05-26 07:45:45'),
+(36, '', 300, 'failed', '', '2022-05-26 07:47:59');
 
 -- --------------------------------------------------------
 
@@ -241,7 +279,16 @@ INSERT INTO `tbl_pickupdetails` (`pickup_id`, `pickup_loc`, `pickup_addr`, `pick
 (51, 'Kanjirappally', 'Building no A12', 'Near School', 'Alantina', 'Office', '9899009978', '2022-05-26', '2022-05-05 17:46:50', 'Pending'),
 (52, 'Erumeli', 'Building no A12', 'Near School', 'Gloriya', 'Home', '8900665674', '2022-05-13', '2022-05-06 10:39:48', 'Pending'),
 (53, 'Erumeli', 'Building No. 323', 'Near School', 'Jerin', 'Home', '8977886650', '2022-05-19', '2022-05-10 10:24:14', 'Pending'),
-(54, 'Kanjirappally', 'Building No. 3299', 'Library', 'Ashmy', 'Home', '9088556499', '2022-05-20', '2022-05-12 06:51:09', 'Pending');
+(54, 'Kanjirappally', 'Building No. 3299', 'Library', 'Ashmy', 'Home', '9088556499', '2022-05-20', '2022-05-12 06:51:09', 'Pending'),
+(56, 'Pala', 'House 78, Pala ', 'School', 'Reshma P', 'Home', '9088667522', '2022-05-19', '2022-05-17 03:58:34', 'Pending'),
+(59, 'Kanjirappally', 'Building no A1211', 'Near church', 'Dona', 'Office', '9088556422', '2022-05-28', '2022-05-26 15:13:14', 'Pending'),
+(60, 'Erumeli', 'Building no A1200', 'Near church', 'Meenu Susan', 'Home', '9877654560', '2022-05-27', '2022-05-26 15:14:56', 'Pending'),
+(61, 'Erumeli', 'Building No. 32', 'Near School', 'Alice Thomas', 'Home', '9099887789', '2022-05-27', '2022-05-26 15:22:33', 'Pending'),
+(62, 'Erumeli', 'Building No. 32', 'Near church', 'Priya Thomas', 'Home', '9877654566', '2022-05-28', '2022-05-26 16:51:04', 'Pending'),
+(63, 'Erumeli', 'Building no A12', 'Near School', 'Meenu Susan', 'Office', '9088556455', '2022-06-04', '2022-05-26 17:05:34', 'Pending'),
+(64, 'Kanjirappally', 'Building no A12', 'KKSk', 'Alvin George', 'Home', '8977563412', '2022-05-28', '2022-05-26 17:28:48', 'Pending'),
+(65, 'Kanjirappally', 'Building no A12', 'KKSk', 'Alvin George', 'Home', '8977563412', '2022-05-28', '2022-05-26 17:30:03', 'Pending'),
+(66, 'Pala', 'Building no A12', 'Near car showroom', 'Alice James', 'Office', '9088556455', '2022-05-28', '2022-05-26 17:35:03', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -264,8 +311,7 @@ CREATE TABLE `tbl_staff` (
 --
 
 INSERT INTO `tbl_staff` (`staff_id`, `idnumber`, `fullname`, `phone`, `dob`, `gender`, `doj`) VALUES
-(678899, 76, 'Jyothika Suresh', 2147483647, '2022-03-07', 'on', '2022-03-24'),
-(789900, 84, 'Christy', 2147483647, '1993-07-07', 'on', '2022-05-19');
+(678899, 76, 'Jyothika Suresh', 2147483647, '2022-03-07', 'on', '2022-03-24');
 
 --
 -- Indexes for dumped tables
@@ -288,6 +334,12 @@ ALTER TABLE `tbl_courier`
 --
 ALTER TABLE `tbl_courierboy`
   ADD PRIMARY KEY (`courierboy_id`);
+
+--
+-- Indexes for table `tbl_courierstatus`
+--
+ALTER TABLE `tbl_courierstatus`
+  ADD PRIMARY KEY (`courier_status_id`);
 
 --
 -- Indexes for table `tbl_deliverydetails`
@@ -327,13 +379,13 @@ ALTER TABLE `tbl_staff`
 -- AUTO_INCREMENT for table `tbl_assigncourier`
 --
 ALTER TABLE `tbl_assigncourier`
-  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `tbl_courier`
 --
 ALTER TABLE `tbl_courier`
-  MODIFY `courier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `courier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `tbl_courierboy`
@@ -342,10 +394,16 @@ ALTER TABLE `tbl_courierboy`
   MODIFY `courierboy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=980057;
 
 --
+-- AUTO_INCREMENT for table `tbl_courierstatus`
+--
+ALTER TABLE `tbl_courierstatus`
+  MODIFY `courier_status_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_deliverydetails`
 --
 ALTER TABLE `tbl_deliverydetails`
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `tbl_login`
@@ -357,13 +415,13 @@ ALTER TABLE `tbl_login`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tbl_pickupdetails`
 --
 ALTER TABLE `tbl_pickupdetails`
-  MODIFY `pickup_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `pickup_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `tbl_staff`
