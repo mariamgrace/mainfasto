@@ -11,6 +11,7 @@ while($row = mysqli_fetch_array($query)){
     $courier_image=$row["courier_image"];
     $courier_cat=$row["courier_cat"]; 
     $courier_weight=$row["courier_weight"];
+    $consignment_no=$row["consignment_no"];
 }
 $res1= mysqli_query($con,"SELECT c.*, p.* FROM tbl_courier c, tbl_pickupdetails p WHERE c.pickup_id = p.pickup_id");//fetch data from 2 database tables
     while($r1 = mysqli_fetch_array($res1)){
@@ -107,10 +108,10 @@ $res2= mysqli_query($con,"SELECT c.*, d.* FROM tbl_courier c, tbl_deliverydetail
                 <div class="row">
                     <div class="col-lg-5 mb-lg-0 mb-3">
                         <b><p class="h4 mb-0">Order Summary</p></b><br>
-                        <p class="mb-0"><span class="fw-bold">Consignment No:</span><span class="c-green"></span> </p>
-                        <p class="mb-0"> <span class="fw-bold">Pickup Date: </span> <span class="fw-normal">&nbsp&nbsp&nbsp<?php echo $pickup_date;?></span> </p>
+                        <p class="mb-0"><span class="fw-bold">Consignment No:</span><span class="fw-bold c-green">&nbsp&nbsp&nbsp<?php echo $consignment_no;?></span> </p>
+                        <br><p class="mb-0"> <span class="fw-bold">Pickup Date: </span> <span class="fw-normal">&nbsp&nbsp&nbsp<?php echo $pickup_date;?></span> </p>
                         <div class="wrapper">
-                            <div class="box box3"><img src="images/<?php echo $courier_image;?>" alt="Image Unavailable"></div>
+                            <br><div class="box box3"><img src="images/<?php echo $courier_image;?>" alt="Image Unavailable"></div>
                         </div>  
                         <br><p class="mb-0"> <span class="fw-bold" style="font-size:20px;">TOTAL AMOUNT:</span> <span class="fw-bold"  style="color:red;font-size:20px;">&nbsp&nbsp Rs. <?php echo $tot_amt;?></span> </p>
                     </div>

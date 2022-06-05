@@ -283,6 +283,7 @@ span.price {
  
     <!--PHP code for Pickup, Delivery, Package-->
     <?php
+    include('dbcon.php');
     if(isset($_POST['order']))
     {
       $pickuplocation=$_POST['pickuplocation'];
@@ -301,6 +302,8 @@ span.price {
       $deliveryaddrtype=$_POST['deliveryaddrtype'];
 
       $category=$_POST['category'];
+      $orderno=mt_rand(100000000,999999999);
+      echo $orderno;
       $packageweight=$_POST['packageweight'];
       $tot_amount=$_POST['tot_amount'];
       $upload=$_FILES['upload']['name'];
@@ -321,7 +324,7 @@ span.price {
         $delivery_id=$r2['delivery_id'];  
         }
         
-      $query3="INSERT INTO `tbl_courier`(`pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`) VALUES ('$pickup_id','$delivery_id','$upload','$category','$packageweight','$tot_amount','Pending')";
+      $query3="INSERT INTO `tbl_courier`(`consignment_no`, `pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`) VALUES ('$orderno', '$pickup_id','$delivery_id','$upload','$category','$packageweight','$tot_amount','Pending')";
       $query_run3 = mysqli_query($con,$query3);
       if($query_run3)
         {
