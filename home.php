@@ -26,7 +26,9 @@ else{
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
-    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
     /* FOOTER*/
@@ -120,7 +122,55 @@ else{
         background: #4158D0;
         margin-left: 80px;
     } 
-    
+        
+    .togglesearch{
+      background: #E8E8E4;
+      position: absolute;
+      top: 130px;
+      right: 4%;
+      width: 650px;
+      padding-right:30px;
+      padding-top:10px;
+      height: 120px;
+      line-height: 90px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      border-top:4px solid #f48c5b;
+      display: none;
+    }
+
+    .togglesearch:before{
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: 13px;
+      margin-right:20%;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 14px solid transparent;
+      border-bottom: 12px solid #f48c5b;
+    }
+
+    .togglesearch input[type="text"]{
+      width: 300px;
+      padding: 9px 10px;
+      margin-left: 23px;
+      margin-right: 80px;
+      border: 3px solid #f48c5b;
+      outline: none;
+    }
+
+    .togglesearch input[type="button"]{
+      width: 100px;
+      padding: 20px 0;
+      background: #f48c5b;
+      color: #fff;
+      margin-left: -6px;
+      border: 1px solid #f48c5b;
+      outline: none;
+      cursor: pointer;
+    }
+
+        
     </style>
    </head>
 <body>
@@ -143,23 +193,15 @@ else{
   </nav>
   <div class="img"></div>
   <div class="center">
-    
     <div class="btns">
       <button onclick="location.href = 'sendcourier.php';">Request Pickup</button>
-      <button  onclick="document.getElementById('id01').style.display='block'">Track Now</button>
+      <button class="fa fa-search" aria-hidden="true">Track Now</button>
+        <div class="togglesearch">
+        <input type="text" placeholder="Consignment No..."/>
+        <input type="button" value="Search"/>
+        </div>                    
     </div>
   </div>
-
-  <!--modal
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content">
-      <div class="w3-container">
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <p>Some text. Some text. Some text.</p>
-        <p>Some text. Some text. Some text.</p>
-      </div>
-    </div>
-  </div>-->
 
   <!--section for About Us-->
   <div id="about">
