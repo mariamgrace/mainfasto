@@ -26,6 +26,7 @@ else{
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
     /* FOOTER*/
@@ -145,9 +146,20 @@ else{
     
     <div class="btns">
       <button onclick="location.href = 'sendcourier.php';">Request Pickup</button>
-      <button onclick="location.href = 'trackcourier.php';">Track Now</button>
+      <button  onclick="document.getElementById('id01').style.display='block'">Track Now</button>
     </div>
   </div>
+
+  <!--modal
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Some text. Some text. Some text.</p>
+        <p>Some text. Some text. Some text.</p>
+      </div>
+    </div>
+  </div>-->
 
   <!--section for About Us-->
   <div id="about">

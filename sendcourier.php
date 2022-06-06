@@ -303,7 +303,7 @@ span.price {
 
       $category=$_POST['category'];
       $orderno=mt_rand(100000000,999999999);
-      echo $orderno;
+      //echo $orderno;
       $packageweight=$_POST['packageweight'];
       $tot_amount=$_POST['tot_amount'];
       $upload=$_FILES['upload']['name'];

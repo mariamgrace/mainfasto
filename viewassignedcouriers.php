@@ -238,6 +238,7 @@ else{
     $courier_cat=$r["courier_cat"];
     $courier_weight=$r["courier_weight"];
     $courier_price=$r["courier_price"];
+    $status=$r["status"];
 
     $rcc= mysqli_query($con,"SELECT `pickup_id`, `pickup_date`, `pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile` FROM `tbl_pickupdetails` WHERE `pickup_id`='$pickid ' AND `status`='Pending'");
     while($rrc= mysqli_fetch_array($rcc))
@@ -278,25 +279,16 @@ else{
         <td><b><?php echo $pick_ph;?></b></td>
         <td>
             <div class="select">
-            <select name="courierboyname">
-            <option>Select</option>
-            <?php 
-            $sql= mysqli_query($con,"SELECT * FROM `tbl_courierstatus`");
-            // use a while loop to fetch data from the $sql variable and individually display as an option
-            while ($cboyname = mysqli_fetch_array($sql,MYSQLI_ASSOC)):;
-            {
-            $courierboyid = $cboyname["idnumber"];
-            $courierboyname = $cboyname["fullname"];
-            }
-            ?>
-            <option value="<?php echo $courierboyid;?>">
-            <?php echo $courierboyname;// To show the courierboy name to the staff?>
-            </option>
-            <?php endwhile;// While loop must be terminated ?>
+            <select name="courierstatus">
+            <option style="font-weight:bold">Select</option>
+            <option style="font-weight:bold">Out for Pickup</option>
+            <option style="font-weight:bold">Pickup Accepted</option>
+            <option style="font-weight:bold">On Transit</option>
+            <option style="font-weight:bold">Out for Delivery</option>
             </select>
             </div>
         </td>
-        <td><b style="color:red;"><?php echo $r["status"];?></b></td>
+        <td><b style="color:red;"><?php echo $status;?></b></td>
         <td><input type="submit" class="button-assignapprove" name="applybtn" value="Apply" /></td>
     </tr>
     </form>
@@ -308,15 +300,24 @@ else{
     ?>       
     <!--PHP code for fetching idnumber from tbl_courierbot and insert it into assigned_cboy_id-->
     <?php
-    if(isset($_GET['action'])== "idd")
+    include ('dbcon.php');
+    if(isset($_POST['applybtn']))
     {
     $couid = $_GET['id'];
-    $sql4 = "SELECT `idnumber` FROM `tbl_courierboy` where `idnumber` = '$couid'";
-    $row4 = mysqli_query($con, $sql4);
-    if($res4 = mysqli_fetch_assoc($row4))
-    {
-    $boyID=$_POST['courierboyname'];
-    }
+    $status=$_POST['courierstatus'];
+    $queryresult="UPDATE `tbl_courier` SET `status`='$status' where `courier_id` = '$couid'";
+    if(mysqli_query($con, $queryresult))
+        {
+        $_SESSION['status']="Updated Successfully";
+        $_SESSION['status_code']="success";
+        //echo '<script type="text/javascript"> alert("User Rgistered Successfully!!!Go To Login..!!")</script>';    
+        }
+        else
+        {
+        $_SESSION['status']="Update Failed";
+        $_SESSION['status_code']="error";
+       
+        }
     }
     ?>
     <!--PHP code for sweet alert-->     
@@ -324,6 +325,7 @@ else{
     if(isset($_SESSION['status']) && $_SESSION['status'] !='')
     {
     ?>
+    
     <script>
     swal({
     title: "<?php echo $_SESSION['status']; ?>",
@@ -332,6 +334,7 @@ else{
     button: "Ok",
     });
     </script>
+   
     <?php
     unset($_SESSION['status']);
     }
