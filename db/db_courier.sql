@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2022 at 10:14 PM
+-- Generation Time: Jun 06, 2022 at 12:36 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -46,7 +46,10 @@ INSERT INTO `tbl_assigncourier` (`assign_id`, `assign_courierid`, `assigned_cour
 (39, 64, 81),
 (40, 67, 81),
 (41, 43, 81),
-(42, 41, 81);
+(42, 41, 81),
+(43, 92, 77),
+(44, 93, 81),
+(45, 94, 81);
 
 -- --------------------------------------------------------
 
@@ -71,41 +74,9 @@ CREATE TABLE `tbl_courier` (
 --
 
 INSERT INTO `tbl_courier` (`courier_id`, `consignment_no`, `pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`) VALUES
-(40, 0, 41, 41, 'fooditemimg2.jpg', 'Non-Fragile', 2, 200, 'Pending'),
-(41, 0, 42, 42, 'docimg1.jpg', 'Medical', 3, 300, 'Pending'),
-(42, 0, 43, 43, 'medicineimg1.jpg', 'Fragile', 2, 200, 'Pending'),
-(43, 0, 44, 44, 'medicineimg3.jpg', 'Medical', 2, 200, 'Pending'),
-(44, 0, 45, 45, 'medicineimg2.jpg', 'Medical', 2, 200, 'Pending'),
-(57, 0, 48, 48, 'gragileimg2.jpg', 'Fragile', 1, 100, 'Pending'),
-(58, 0, 49, 49, 'DOCS3.jpg', 'Medical', 1, 100, 'Pending'),
-(59, 0, 50, 50, 'fooditemimg2.jpg', 'Non-Fragile', 2, 200, 'Pending'),
-(62, 0, 51, 51, 'docimg1.jpg', 'Medical', 1, 100, 'Pending'),
-(63, 0, 52, 52, 'fooditemimg1.jpg', 'Medical', 2, 200, 'Pending'),
-(64, 0, 53, 53, 'fooditemimg1.jpg', 'Document', 2, 200, 'Pending'),
-(65, 0, 54, 54, 'DOCS3.jpg', 'Medical', 2, 200, 'Pending'),
-(67, 0, 56, 56, 'docimg1.jpg', 'Fragile', 2, 200, 'Pending'),
-(70, 0, 59, 59, 'Blank diagram - Page 1.png', 'Medical', 3, 300, 'Pending'),
-(71, 0, 60, 60, 'Screenshot 2022-05-17 115530.png', 'Medical', 2, 200, 'Pending'),
-(72, 0, 61, 61, 'Screenshot 2022-05-17 115530.png', 'Document', 1, 100, 'Pending'),
-(73, 0, 62, 62, 'Screenshot (193).png', 'Medical', 3, 300, 'Pending'),
-(74, 0, 63, 63, 'Screenshot 2022-05-17 115601.png', 'Medical', 3, 300, 'Pending'),
-(75, 0, 64, 64, 'Blank diagram - Page 1.png', 'Document', 1, 100, 'Pending'),
-(76, 0, 65, 65, 'Blank diagram - Page 1.png', 'Document', 1, 100, 'Pending'),
-(77, 0, 66, 66, 'Screenshot 2022-05-17 115530.png', 'Medical', 3, 300, 'Pending'),
-(79, 0, 68, 68, 'Screenshot 2022-05-30 154946.png', 'Medical', 3, 300, 'Pending'),
-(80, 0, 69, 69, 'Screenshot 2022-05-17 115601.png', 'Medical', 3, 300, 'Pending'),
-(81, 0, 70, 70, 'Screenshot 2022-05-17 114709.png', 'Fragile', 2, 200, 'Pending'),
-(82, 0, 71, 71, 'Blank diagram - Page 1.png', 'Medical', 3, 300, 'Pending'),
-(83, 0, 72, 72, 'DOCS1.jpg', 'Medical', 2, 200, 'Pending'),
-(84, 0, 73, 73, 'fragileimg1.jpg', 'Fragile', 3, 300, 'Pending'),
-(85, 0, 74, 74, 'iconn.png', 'Non-Fragile', 3, 300, 'Pending'),
-(86, 0, 76, 76, 'DOCS2.jpg', 'Document', 3, 300, 'Pending'),
-(87, 0, 81, 81, 'fooditemimg1.jpg', 'Document', 2, 200, 'Pending'),
-(88, 0, 82, 82, 'DOCS1.jpg', 'Document', 2, 200, 'Pending'),
-(89, 0, 83, 83, 'DOCS1.jpg', 'Medical', 2, 200, 'Pending'),
-(90, 585462912, 0, 0, '', '', 0, 0, ''),
-(91, 0, 84, 84, 'docimg1.jpg', 'Medical', 3, 300, 'Pending'),
-(92, 989386684, 85, 85, 'docimg1.jpg', 'Medical', 2, 200, 'Pending');
+(92, 989386684, 85, 85, 'docimg1.jpg', 'Medical', 2, 200, 'Out for Pickup'),
+(93, 882150883, 86, 86, 'DOCS3.jpg', 'Document', 2, 200, 'Out for Pickup'),
+(94, 880123212, 87, 87, 'fragile.jpeg', 'Fragile', 1, 100, 'Pickup Accepted');
 
 -- --------------------------------------------------------
 
@@ -164,45 +135,9 @@ CREATE TABLE `tbl_deliverydetails` (
 --
 
 INSERT INTO `tbl_deliverydetails` (`delivery_id`, `delivery_loc`, `delivery_addr`, `delivery_ins`, `delivery_receiver`, `delivery_addrtype`, `delivery_mobile`, `status`) VALUES
-(41, 'Kanjirappally', 'House no 2', 'Postoffice', 'Jailakshmi', 'Home', '8933220912', 'Pending'),
-(42, 'Erumeli', 'House no 22', 'College Road', 'Nikky George', 'Office', '7844562234', 'Pending'),
-(43, 'Pala', 'House no 27', 'College Road', 'Jacob K', 'Office', '9899453321', 'Pending'),
-(44, 'Erumeli', 'House no 22', 'Near Shrine', 'Aleena Elsa', 'Office', '7844562234', 'Pending'),
-(45, 'Kanjirappally', 'House no 2', 'College', 'Aleena Elsa', 'Office', '8933220912', 'Pending'),
-(48, 'Pala', 'House no 22', 'College', 'Liyan Susan', 'Home', '7899654412', 'Pending'),
-(49, 'Kanjirappally', 'House no 22', 'Market', 'Manas P', 'Home', '7844562234', 'Pending'),
-(50, 'Erumeli', 'House no 27', 'College Road', 'Frank Mathew', 'Home', '7899654412', 'Pending'),
-(51, 'Kanjirappally', 'House no 289', 'Shopping mall', 'Angel', 'Home', '7844562234', 'Pending'),
-(52, 'Kanjirappally', 'House no 22', 'College Road', 'Rincy', 'Office', '7899654412', 'Pending'),
-(53, 'Kanjirappally', 'House no 22', 'College Road', 'Vaidehi', 'Office', '9088667566', 'Pending'),
-(54, 'Kanjirappally', 'House no 229', 'Near Shrine', 'Ammu', 'Office', '7899654419', 'Pending'),
-(56, 'Kanjirappally', 'House no 229', 'College', 'Kevin Liza', 'Home', '7899654487', 'Pending'),
-(59, 'Erumeli', 'House no 221', 'College', 'John Thomas', 'Home', '7899654412', 'Pending'),
-(60, 'Pala', 'House no 27', 'Near Shrine', 'Aleena Elsa', 'Home', '7899654412', 'Pending'),
-(61, 'Erumeli', 'House no 2', 'asda', 'Liyan Susan', 'Office', '7899654412', 'Pending'),
-(62, 'Pala', 'House no 22', 'Near Shrine', 'Stephy', 'Office', '7844562234', 'Pending'),
-(63, 'Erumeli', 'House no 27', 'College Road', 'John Thomas', 'Office', '7844562234', 'Pending'),
-(64, 'Kanjirappally', 'House no 27', 'asda', 'John Thomas', 'Office', '7899654412', 'Pending'),
-(65, 'Kanjirappally', 'House no 27', 'asda', 'John Thomas', 'Office', '7899654412', 'Pending'),
-(66, 'Erumeli', 'House no 22', 'College Road', 'Aleena Elsa', 'Office', '7844562234', 'Pending'),
-(68, 'Pala', 'House no 2255', 'College Road', 'John Thomas', 'Office', '7899654412', 'Pending'),
-(69, 'Pala', 'House no 22', 'Near Shrine', 'Jacob Jojy', 'Office', '7899654411', 'Pending'),
-(70, 'Erumeli', 'House no 2', 'College', 'Maneeksha', 'Home', '7899654489', 'Pending'),
-(71, 'Kanjirappally', 'House no 33', 'College', 'Jaison', 'Office', '7899654411', 'Pending'),
-(72, 'Erumeli', 'House no 200', 'College', 'Lilly Abraham', 'Office', '9088667545', 'Pending'),
-(73, 'Pala', 'House no 2709', 'Palace', 'Kevin Thomas', 'Office', '7899654465', 'Pending'),
-(74, 'Erumeli', 'House no 09', 'College', 'Albin', 'Home', '7899654999', 'Pending'),
-(75, 'Kanjirappally', 'House no 22', 'College Road', 'Aleena Elsa', 'Home', '7899654412', 'Pending'),
-(76, 'Kanjirappally', 'House no 22', 'College Road', 'Liyan Susan', 'Office', '7844562234', 'Pending'),
-(77, 'Kanjirappally', 'House no 22', 'Near Shrine', 'John Thomas', 'Office', '7844562234', 'Pending'),
-(78, 'Erumeli', 'House no 27', 'College Road', 'John Thomas', 'Home', '7844562234', 'Pending'),
-(79, 'Pala', 'House no 22', 'Near Shrine', 'John Thomas', 'Home', '7844562234', 'Pending'),
-(80, 'Erumeli', 'House no 27', 'Near Shrine', 'John Thomas', 'Office', '7899654412', 'Pending'),
-(81, 'Pala', 'House no 27', 'College', 'Manas', 'Office', '7844562234', 'Pending'),
-(82, 'Pala', 'House no 22', 'College', 'Aleena', 'Office', '7844562209', 'Pending'),
-(83, 'Kanjirappally', 'House no 27', 'College Road', 'John Thomas', 'Office', '7899654412', 'Pending'),
-(84, 'Erumeli', 'House no 2', 'Near Shrine', 'Rose', 'Office', '8933220912', 'Pending'),
-(85, 'Erumeli', 'House no 27', 'Near Shrine', 'Antony', 'Office', '7844562234', 'Pending');
+(85, 'Erumeli', 'House no 27', 'Near Shrine', 'Antony', 'Office', '7844562234', 'Pending'),
+(86, 'Kanjirappally', 'House no 22', 'Near Shrine', 'Soorya P', 'Home', '7844562234', 'Pending'),
+(87, 'Pala', 'House no 22', 'College', 'Vaidehi', 'Home', '7844562234', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -307,7 +242,9 @@ INSERT INTO `tbl_payment` (`id`, `name`, `amount`, `payment_status`, `payment_id
 (63, 'Amal', 200, 'failed', '', '2022-06-05 09:51:35'),
 (64, 'Amal', 200, 'failed', '', '2022-06-05 09:51:37'),
 (65, 'Amal', 200, 'failed', '', '2022-06-05 09:51:41'),
-(66, 'Amal', 200, 'complete', 'pay_Jdw2xAanf6qiRk', '2022-06-05 09:51:51');
+(66, 'Amal', 200, 'complete', 'pay_Jdw2xAanf6qiRk', '2022-06-05 09:51:51'),
+(67, 'Stephy@gmail.com', 200, 'complete', 'pay_Je9gXuQZBVVUQj', '2022-06-06 11:12:08'),
+(68, 'maneeksha@gmail.com', 100, 'complete', 'pay_Je9itAijF1khs7', '2022-06-06 11:14:32');
 
 -- --------------------------------------------------------
 
@@ -333,45 +270,9 @@ CREATE TABLE `tbl_pickupdetails` (
 --
 
 INSERT INTO `tbl_pickupdetails` (`pickup_id`, `pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile`, `pickup_date`, `pickup_time`, `status`) VALUES
-(41, 'Erumeli', 'Building no A12', 'Gen Hospital', 'Krishna Biju', 'Office', '8900665674', '2022-05-26', '2022-05-04 17:05:23', 'Pending'),
-(42, 'Pala', 'Building No. 32', 'Near School', 'Soorya P', 'Home', '9099887789', '2022-05-19', '2022-05-04 17:15:17', 'Pending'),
-(43, 'Erumeli', 'Building No. 32', 'Church RC', 'Jose K', 'Home', '8977563412', '2022-05-20', '2022-05-04 17:45:49', 'Pending'),
-(44, 'Kanjirappally', 'Building no A12', 'Near church', 'Anjali Rachel', 'Home', '8900665674', '2022-05-26', '2022-05-04 18:25:17', 'Pending'),
-(45, 'Erumeli', 'Building no A12', 'Near School', 'Alvin George', 'Home', '9099887789', '2022-05-19', '2022-05-05 05:17:43', 'Pending'),
-(48, 'Erumeli', 'Building No. 32', 'Near church', 'Meenu Susan', 'Home', '9877654566', '2022-05-26', '2022-05-05 15:25:12', 'Pending'),
-(49, 'Erumeli', 'Building No. 32', 'Near School', 'Jovita', 'Office', '8933445509', '2022-05-19', '2022-05-05 15:38:49', 'Pending'),
-(50, 'Erumeli', 'Building No. 32', 'Hospital', 'Rubin Siby', 'Office', '9099887789', '2022-05-13', '2022-05-05 17:32:19', 'Pending'),
-(51, 'Kanjirappally', 'Building no A12', 'Near School', 'Alantina', 'Office', '9899009978', '2022-05-26', '2022-05-05 17:46:50', 'Pending'),
-(52, 'Erumeli', 'Building no A12', 'Near School', 'Gloriya', 'Home', '8900665674', '2022-05-13', '2022-05-06 10:39:48', 'Pending'),
-(53, 'Erumeli', 'Building No. 323', 'Near School', 'Jerin', 'Home', '8977886650', '2022-05-19', '2022-05-10 10:24:14', 'Pending'),
-(54, 'Kanjirappally', 'Building No. 3299', 'Library', 'Ashmy', 'Home', '9088556499', '2022-05-20', '2022-05-12 06:51:09', 'Pending'),
-(56, 'Pala', 'House 78, Pala ', 'School', 'Reshma P', 'Home', '9088667522', '2022-05-19', '2022-05-17 03:58:34', 'Pending'),
-(59, 'Kanjirappally', 'Building no A1211', 'Near church', 'Dona', 'Office', '9088556422', '2022-05-28', '2022-05-26 15:13:14', 'Pending'),
-(60, 'Erumeli', 'Building no A1200', 'Near church', 'Meenu Susan', 'Home', '9877654560', '2022-05-27', '2022-05-26 15:14:56', 'Pending'),
-(61, 'Erumeli', 'Building No. 32', 'Near School', 'Alice Thomas', 'Home', '9099887789', '2022-05-27', '2022-05-26 15:22:33', 'Pending'),
-(62, 'Erumeli', 'Building No. 32', 'Near church', 'Priya Thomas', 'Home', '9877654566', '2022-05-28', '2022-05-26 16:51:04', 'Pending'),
-(63, 'Erumeli', 'Building no A12', 'Near School', 'Meenu Susan', 'Office', '9088556455', '2022-06-04', '2022-05-26 17:05:34', 'Pending'),
-(64, 'Kanjirappally', 'Building no A12', 'KKSk', 'Alvin George', 'Home', '8977563412', '2022-05-28', '2022-05-26 17:28:48', 'Pending'),
-(65, 'Kanjirappally', 'Building no A12', 'KKSk', 'Alvin George', 'Home', '8977563412', '2022-05-28', '2022-05-26 17:30:03', 'Pending'),
-(66, 'Pala', 'Building no A12', 'Near car showroom', 'Alice James', 'Office', '9088556455', '2022-05-28', '2022-05-26 17:35:03', 'Pending'),
-(68, 'Erumeli', 'hannns', 'Near car showroom', 'Alvin', 'Home', '9877654566', '2022-06-03', '2022-05-31 05:38:44', 'Pending'),
-(69, 'Erumeli', 'Building No. 56', 'School', 'Abyson Mathew', 'Office', '8977563466', '2022-06-10', '2022-06-02 04:30:45', 'Pending'),
-(70, 'Kanjirappally', 'Building No. 3299', 'Near church', 'Kurien', 'Home', '9877654599', '2022-06-10', '2022-06-02 05:13:04', 'Pending'),
-(71, 'Erumeli', 'Building no A12', 'Near church', 'Rosemol', 'Home', '8977563411', '2022-06-03', '2022-06-02 06:25:00', 'Pending'),
-(72, 'Kanjirappally', 'Building No. 32', 'Post Office', 'Liyan Susan', 'Home', '8900665633', '2022-06-10', '2022-06-04 15:17:29', 'Pending'),
-(73, 'Erumeli', 'Building no A1289', 'Petrol Pump', 'Phebe Lenin', 'Office', '8799006543', '2022-06-11', '2022-06-05 07:24:55', 'Pending'),
-(74, 'Pala', 'Building no A12', 'Near School', 'Akshai', 'Office', '8977563498', '2022-06-10', '2022-06-05 13:33:26', 'Pending'),
-(75, 'Pala', 'Building no A12', 'Near car showroom', 'Priya T', 'Home', '8900665674', '2022-06-09', '2022-06-05 16:02:37', 'Pending'),
-(76, 'Erumeli', 'Building No. 32', 'Near church', 'Alvin Geo', 'Home', '8977563412', '2022-06-10', '2022-06-05 16:06:24', 'Pending'),
-(77, 'Erumeli', 'Building no A12000', 'Near car showroom', 'Dona', 'Home', '9877654566', '2022-06-10', '2022-06-05 16:18:37', 'Pending'),
-(78, 'Erumeli', 'Building no A12', 'Near car showroom', 'Meenu Susan Philip', 'Home', '8977563412', '2022-06-11', '2022-06-05 16:26:03', 'Pending'),
-(79, 'Erumeli', 'Building No. 32', 'Near church', 'Abyson Mathew', 'Office', '8977563412', '2022-06-10', '2022-06-05 16:45:29', 'Pending'),
-(80, 'Erumeli', 'Building no A12', 'Near car showroom', 'Meenu Susan', 'Home', '9099887789', '2022-06-17', '2022-06-05 16:48:22', 'Pending'),
-(81, 'Erumeli', 'Building No. 32', 'Near car showroom', 'Telbin', 'Home', '8900665674', '2022-06-10', '2022-06-05 17:03:00', 'Pending'),
-(82, 'Pala', 'Building no A12', 'Near School', 'Aksa', 'Office', '8900665674', '2022-06-10', '2022-06-05 17:30:16', 'Pending'),
-(83, 'Erumeli', 'Building no A12', 'Near car showroom', 'Soorya', 'Office', '8977563412', '2022-06-08', '2022-06-05 17:40:08', 'Pending'),
-(84, 'Kanjirappally', 'Building no A12', 'Near car showroom', 'Sona', 'Office', '9099887789', '2022-06-25', '2022-06-05 19:22:42', 'Pending'),
-(85, 'Pala', 'Building no A12', 'Near car showroom', 'Amal', 'Home', '9099887789', '2022-06-10', '2022-06-05 19:33:21', 'Pending');
+(85, 'Pala', 'Building no A12', 'Near car showroom', 'Amal', 'Home', '9099887789', '2022-06-10', '2022-06-05 19:33:21', 'Pending'),
+(86, 'Erumeli', 'Building no A129', 'Near School', 'Sona P', 'Home', '8933445578', '2022-06-10', '2022-06-06 09:11:50', 'Pending'),
+(87, 'Kanjirappally', 'Building No. 32', 'Near School', 'Maneeksha', 'Home', '8977563412', '2022-06-10', '2022-06-06 09:14:12', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -462,13 +363,13 @@ ALTER TABLE `tbl_staff`
 -- AUTO_INCREMENT for table `tbl_assigncourier`
 --
 ALTER TABLE `tbl_assigncourier`
-  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tbl_courier`
 --
 ALTER TABLE `tbl_courier`
-  MODIFY `courier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `courier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `tbl_courierboy`
@@ -486,7 +387,7 @@ ALTER TABLE `tbl_courierstatus`
 -- AUTO_INCREMENT for table `tbl_deliverydetails`
 --
 ALTER TABLE `tbl_deliverydetails`
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `tbl_login`
@@ -498,13 +399,13 @@ ALTER TABLE `tbl_login`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `tbl_pickupdetails`
 --
 ALTER TABLE `tbl_pickupdetails`
-  MODIFY `pickup_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `pickup_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `tbl_staff`
