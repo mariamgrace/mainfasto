@@ -185,9 +185,10 @@ else{
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#">Contact</a></li>
+        <li><a href="courierhistory.php">Orders</a></li>
         <li><a href="logout.php">Logout</a></li>
-        <li style="margin-left:50px;color:white"><b>
-        <span>Welcome <?php echo $var;?> </span></b></li>
+        <li style="margin-left:50px;color:black"><b>
+        <span>Hello <?php echo $var;?> </span></b></li>
       </ul>
     </div>
   </nav>

@@ -6,7 +6,8 @@ $var=$_SESSION['name'];
 $res= mysqli_query($con,"SELECT * FROM `tbl_login` where username='$var'");
 while($r = mysqli_fetch_array($res))
 {
-$uname=$r['username'];  //username from table field & $uname is a random name
+$uname=$r['username'];
+$useid=$r['id'];  //username from table field & $uname is a random name
 }
 
 if(isset($_SESSION["fastoSession"]) != session_id()){
@@ -324,7 +325,7 @@ span.price {
         $delivery_id=$r2['delivery_id'];  
         }
         
-      $query3="INSERT INTO `tbl_courier`(`consignment_no`, `pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`) VALUES ('$orderno', '$pickup_id','$delivery_id','$upload','$category','$packageweight','$tot_amount','Pending')";
+      $query3="INSERT INTO `tbl_courier`(`consignment_no`, `pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`, `username`) VALUES ('$orderno', '$pickup_id','$delivery_id','$upload','$category','$packageweight','$tot_amount','Pending','$useid')";
       $query_run3 = mysqli_query($con,$query3);
       if($query_run3)
         {
