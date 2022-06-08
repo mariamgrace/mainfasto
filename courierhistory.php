@@ -25,12 +25,11 @@ $userid = $r['id']; //username from table field & $uname is a random name
           /* FOOTER*/
       .footer 
       {
-        margin-top: 100px;
+        margin-top: 240px;
         background-color: black;
         position:fixed;
         width: 100%;
         height:15%;
-        margin-top: 650px;
         
       }
       .footer p{
@@ -49,28 +48,29 @@ $userid = $r['id']; //username from table field & $uname is a random name
         margin-bottom: 10px;
         color:#f48c5b;
       }
-      #viewtableid {
-        font-family: "Poppins", sans-serif;
-        border-collapse: collapse;
-        width: 50%;
-        }
-        #viewtableid td, #viewtableid th {
-        border: 5px solid #000;
-        padding: 8px;
-        }
-        #viewtableid tr:nth-child(even){background-color: #f2f2f2;}
-        #viewtableid tr:hover {background-color: #ddd;}
-        #viewtableid th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #000;
-        color:  #ff661fd2;
-        }
-        /*VIEW TABLE DESIGN CSS*/
-        .viewtable{
-            height:100%;
-        }
+    .column {
+    margin-left:30px;
+    margin-right:30px;
+
+    margin-top:30px;
+   
+    }
+    @media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: table;
+        margin-bottom: 20px;
+    }
+    }
+    .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    text-align: center;
+    background-color: #FDE6D5;
+    }
     </style>
 </head>
 <body>
@@ -88,71 +88,33 @@ $userid = $r['id']; //username from table field & $uname is a random name
         </ul>
         </div>
     </nav>
-    <section class="viewtable">
-    <center>
-    <table id="viewtableid" style="margin-top:3%; margin-left:10%">
-        <tr>
-            <th>Consignment No</th>
-            <th>Courier Image</th>
-            <th>Courier Categery</th>
-            <th>Courier Weight</th>
-            <th>Status</th>
-        </tr>
-        
+    <h1 style="margin-left:50px;margin-top:20px;">Order History</h1>
             <?php
+            
             $r=mysqli_query($con,"SELECT `courier_id`, `consignment_no`, `pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`, `username` FROM `tbl_courier` WHERE `username`='$userid'");
             while($rr= mysqli_fetch_array($r))
             {
             ?> 
-        <tr>
-        <td><b><?php echo $rr['consignment_no'];?></b></td>
-        <td><img src="images/<?php echo $rr['courier_image'];?>" height="100" width="100"/></td>
-        <td><b><?php echo $rr['courier_cat'];?></b></td>
-        <td><b><?php echo $rr['courier_weight'];?></b></td>
-        <td><b><?php echo $rr['status'];?></b></td>
-        </tr>
-        
-
-    <!--
-        <div class="wrapper">
-            <div class="left">
-            <br><br><br><br><br><br><h2 style="color:black;">Consignment Number</h2>
-            <span><h2><b style="color:black;"><?php echo $rr['consignment_no'];?></b></h2></span>
-            </div>
-            <div class="right">
-                <div class="info">
-                <form action="#" method="POST">
-                    <h3>Order Status</h3>
-                    <div class="info_data">
-                        <div class="data">
-                            <h4>Courier</h4>
-                            <p><img src="images/<?php echo $rr['courier_image'];?>" height="100" width="100"/></p>
-                        </div>
-                        <div class="data">
-                            <h4>Courier Categery</h4>
-                            <p><?php echo  $rr['courier_cat']; ?></p>
-                        </div>
-                        <div class="data">
-                            <h4>Status</h4>
-                            <b style="color:red;"><?php echo  $rr['status']; ?></b>
-                        </div>
-                    </div>
-                </form>
-                </div>   
-            </div>
-    </div>-->
-    <?php
-    }
-    ?>
-    </table>
-    </section>
+    <div class="row"  style="display: table-cell; width: 20%;">
+    <div class="column" >
+        <div class="card" >
+        <h3>Consignment No: <?php echo $rr['consignment_no'];?> </h3>
+        <p>Courier: <img src="images/<?php echo $rr['courier_image'];?>" height="100" width="100"/> </p>
+        <p>Courier Categery: <?php echo  $rr['courier_cat']; ?> </p>
+        <p>Courier Status:<span style="color:green"><?php echo  $rr['status']; ?></span></p>
+        </div>
+    </div>
+    </div>    
+            <?php
+            }
+            ?>
 
     <!--Footer-->
     <div class="footer">
     <p>For Booking & Enquiries</p><br>
     <p>fastocouriers@gmail.com</p>
     <p class="copyright">Copyright © 2021</p>      
-  </div>
+    </div>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2022 at 01:35 PM
+-- Generation Time: Jun 08, 2022 at 10:58 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -38,21 +38,8 @@ CREATE TABLE `tbl_assigncourier` (
 --
 
 INSERT INTO `tbl_assigncourier` (`assign_id`, `assign_courierid`, `assigned_courierboy`) VALUES
-(28, 63, 77),
-(31, 62, 81),
-(33, 43, 81),
-(35, 58, 77),
-(37, 57, 77),
-(39, 64, 81),
-(40, 67, 81),
-(41, 43, 81),
-(42, 41, 81),
-(43, 92, 77),
-(44, 93, 81),
-(45, 94, 81),
-(46, 95, 77),
-(47, 96, 81),
-(48, 98, 77);
+(49, 100, 77),
+(50, 99, 81);
 
 -- --------------------------------------------------------
 
@@ -78,13 +65,8 @@ CREATE TABLE `tbl_courier` (
 --
 
 INSERT INTO `tbl_courier` (`courier_id`, `consignment_no`, `pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`, `username`) VALUES
-(92, 989386684, 85, 85, 'docimg1.jpg', 'Medical', 2, 200, 'Out for Pickup', ''),
-(93, 882150883, 86, 86, 'DOCS3.jpg', 'Document', 2, 200, 'Out for Pickup', ''),
-(94, 880123212, 87, 87, 'fragile.jpeg', 'Fragile', 1, 100, 'Pickup Accepted', ''),
-(95, 610972384, 88, 88, 'DOCS1.jpg', 'Medical', 2, 200, 'Pickup Accepted', ''),
-(96, 807673148, 89, 89, 'iconbox.png', 'Medical', 3, 300, 'Out for Pickup', '74'),
-(97, 657794875, 90, 90, 'DOCS2.jpg', 'Medical', 3, 300, 'Pending', '74'),
-(98, 373263003, 91, 91, 'fragileimg3.png', 'Fragile', 3, 300, 'On Transit', '80');
+(99, 195671441, 92, 92, 'medicineimg3.jpg', 'Medical', 2, 200, 'Pickup Accepted', '74'),
+(100, 897157548, 93, 93, 'medicineimg2.jpg', 'Medical', 1, 100, 'Out for Pickup', '74');
 
 -- --------------------------------------------------------
 
@@ -135,21 +117,16 @@ CREATE TABLE `tbl_deliverydetails` (
   `delivery_receiver` varchar(100) NOT NULL,
   `delivery_addrtype` varchar(100) NOT NULL,
   `delivery_mobile` varchar(100) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `username` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_deliverydetails`
 --
 
-INSERT INTO `tbl_deliverydetails` (`delivery_id`, `delivery_loc`, `delivery_addr`, `delivery_ins`, `delivery_receiver`, `delivery_addrtype`, `delivery_mobile`, `status`) VALUES
-(85, 'Erumeli', 'House no 27', 'Near Shrine', 'Antony', 'Office', '7844562234', 'Pending'),
-(86, 'Kanjirappally', 'House no 22', 'Near Shrine', 'Soorya P', 'Home', '7844562234', 'Pending'),
-(87, 'Pala', 'House no 22', 'College', 'Vaidehi', 'Home', '7844562234', 'Pending'),
-(88, 'Pala', 'House no 27', 'College Road', 'Eliza', 'Office', '7844562238', 'Pending'),
-(89, 'Pala', 'House no 22', 'College Road', 'Telbin', 'Office', '9099887777', 'Pending'),
-(90, 'Pala', 'House no 22', 'College', 'George', 'Office', '7844562234', 'Pending'),
-(91, 'Kanjirappally', 'House no 299', 'College', 'Aleena', 'Home', '9099886654', 'Pending');
+INSERT INTO `tbl_deliverydetails` (`delivery_id`, `delivery_loc`, `delivery_addr`, `delivery_ins`, `delivery_receiver`, `delivery_addrtype`, `delivery_mobile`, `username`) VALUES
+(92, 'Pala', 'House no 22', 'School', 'Liyan', 'Home', '7899654412', '74'),
+(93, 'Pala', 'Block 27 A', 'Temple', 'Alwin Jacob', 'Office', '9088776654', '74');
 
 -- --------------------------------------------------------
 
@@ -260,7 +237,9 @@ INSERT INTO `tbl_payment` (`id`, `name`, `amount`, `payment_status`, `payment_id
 (69, 'Antiontttt', 200, 'complete', 'pay_JeWQ67n2yEhGjX', '2022-06-07 09:25:41'),
 (70, 'sona', 300, 'complete', 'pay_JexTyaaQG0nGHw', '2022-06-08 11:55:12'),
 (71, 'soorya', 300, 'complete', 'pay_JexdHGpcloaNUC', '2022-06-08 12:03:42'),
-(72, 'Abyson', 300, 'complete', 'pay_JexyyYVQ9xa2L7', '2022-06-08 12:24:31');
+(72, 'Abyson', 300, 'complete', 'pay_JexyyYVQ9xa2L7', '2022-06-08 12:24:31'),
+(73, 'sona', 200, 'failed', '', '2022-06-08 08:29:22'),
+(74, 'JESWIN', 100, 'complete', 'pay_Jf6RYgqAP4yqWU', '2022-06-08 08:41:09');
 
 -- --------------------------------------------------------
 
@@ -277,22 +256,16 @@ CREATE TABLE `tbl_pickupdetails` (
   `pickup_addrtype` varchar(100) NOT NULL,
   `pickup_mobile` varchar(100) NOT NULL,
   `pickup_date` date NOT NULL,
-  `pickup_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` varchar(100) NOT NULL
+  `username` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tbl_pickupdetails`
 --
 
-INSERT INTO `tbl_pickupdetails` (`pickup_id`, `pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile`, `pickup_date`, `pickup_time`, `status`) VALUES
-(85, 'Pala', 'Building no A12', 'Near car showroom', 'Amal', 'Home', '9099887789', '2022-06-10', '2022-06-05 19:33:21', 'Pending'),
-(86, 'Erumeli', 'Building no A129', 'Near School', 'Sona P', 'Home', '8933445578', '2022-06-10', '2022-06-06 09:11:50', 'Pending'),
-(87, 'Kanjirappally', 'Building No. 32', 'Near School', 'Maneeksha', 'Home', '8977563412', '2022-06-10', '2022-06-06 09:14:12', 'Pending'),
-(88, 'Pala', 'Building no A127', 'church', 'Meenu Susan', 'Home', '9877654566', '2022-06-08', '2022-06-07 07:25:08', 'Pending'),
-(89, 'Pala', 'Building No. 3299', 'Near church', 'Sulu', 'Office', '9088556455', '2022-06-10', '2022-06-08 09:54:41', 'Pending'),
-(90, 'Pala', 'Building no A1200', 'Near School', 'Thomas', 'Office', '9088556455', '2022-06-10', '2022-06-08 10:03:34', 'Pending'),
-(91, 'Erumeli', 'Building No. 3299', 'Near church', 'Abyson', 'Office', '9099887789', '2022-06-10', '2022-06-08 10:24:18', 'Pending');
+INSERT INTO `tbl_pickupdetails` (`pickup_id`, `pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile`, `pickup_date`, `username`) VALUES
+(92, 'Erumeli', 'Building no A12', 'Near car showroom', 'Alantina', 'Office', '9099887789', '2022-06-18', '74'),
+(93, 'Erumeli', 'Arcade 234', 'Post Office ', 'Jeswin Shaji', 'Home', '8933445788', '2022-06-11', '74');
 
 -- --------------------------------------------------------
 
@@ -383,13 +356,13 @@ ALTER TABLE `tbl_staff`
 -- AUTO_INCREMENT for table `tbl_assigncourier`
 --
 ALTER TABLE `tbl_assigncourier`
-  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `assign_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `tbl_courier`
 --
 ALTER TABLE `tbl_courier`
-  MODIFY `courier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `courier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `tbl_courierboy`
@@ -407,7 +380,7 @@ ALTER TABLE `tbl_courierstatus`
 -- AUTO_INCREMENT for table `tbl_deliverydetails`
 --
 ALTER TABLE `tbl_deliverydetails`
-  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `delivery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `tbl_login`
@@ -419,13 +392,13 @@ ALTER TABLE `tbl_login`
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `tbl_pickupdetails`
 --
 ALTER TABLE `tbl_pickupdetails`
-  MODIFY `pickup_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `pickup_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `tbl_staff`

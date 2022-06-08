@@ -310,14 +310,14 @@ span.price {
       $upload=$_FILES['upload']['name'];
       move_uploaded_file($_FILES['upload']['tmp_name'],"images/".$_FILES['upload']['name']);
 
-      $query1="INSERT INTO `tbl_pickupdetails`(`pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile`, `pickup_date`, `status`) VALUES ('$pickuplocation','$pickupaddress','$pickupinstructions','$pickupname','$pickupaddrtype','$pickupcontact','$pickupdate','Pending')";
+      $query1="INSERT INTO `tbl_pickupdetails`(`pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile`, `pickup_date`, `username`) VALUES ('$pickuplocation','$pickupaddress','$pickupinstructions','$pickupname','$pickupaddrtype','$pickupcontact','$pickupdate', '$useid')";
       $query_run1 = mysqli_query($con,$query1);
       $respickupdetails= mysqli_query($con,"SELECT pickup_id FROM `tbl_pickupdetails`");
       while($r1 = mysqli_fetch_array($respickupdetails))
         {
         $pickup_id=$r1['pickup_id'];  
         }         
-      $query2="INSERT INTO `tbl_deliverydetails`(`delivery_loc`, `delivery_addr`, `delivery_ins`, `delivery_receiver`, `delivery_addrtype`, `delivery_mobile`, `status`) VALUES ('$deliverylocation','$deliveryaddress','$deliveryinstructions','$deliveryname','$deliveryaddrtype','$deliverycontact','Pending')";
+      $query2="INSERT INTO `tbl_deliverydetails`(`delivery_loc`, `delivery_addr`, `delivery_ins`, `delivery_receiver`, `delivery_addrtype`, `delivery_mobile`, `username`) VALUES ('$deliverylocation','$deliveryaddress','$deliveryinstructions','$deliveryname','$deliveryaddrtype','$deliverycontact', '$useid')";
       $query_run2 = mysqli_query($con,$query2);
       $resdeliverydetails= mysqli_query($con,"SELECT delivery_id FROM `tbl_deliverydetails`");
       while($r2 = mysqli_fetch_array($resdeliverydetails))

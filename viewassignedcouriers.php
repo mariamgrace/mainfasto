@@ -240,7 +240,7 @@ else{
     $courier_price=$r["courier_price"];
     $status=$r["status"];
 
-    $rcc= mysqli_query($con,"SELECT `pickup_id`, `pickup_date`, `pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile` FROM `tbl_pickupdetails` WHERE `pickup_id`='$pickid ' AND `status`='Pending'");
+    $rcc= mysqli_query($con,"SELECT `pickup_id`, `pickup_date`, `pickup_loc`, `pickup_addr`, `pickup_ins`, `pickup_sender`, `pickup_addrtype`, `pickup_mobile` FROM `tbl_pickupdetails` WHERE `pickup_id`='$pickid '");
     while($rrc= mysqli_fetch_array($rcc))
     {
     $pick_dt=$rrc["pickup_date"];

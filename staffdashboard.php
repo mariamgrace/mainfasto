@@ -47,12 +47,6 @@ else{
 				</a>
 			</li>
 			<li>
-                <a href="#">
-					<span class="icon"><i class="fa fa-truck"></i></span>
-					<span class="text">Courier Boy</span>
-				</a>
-			</li>
-			<li>
 				<a href="leave.php">
 					<span class="icon"><i class="fa fa-calendar"></i></span>
 					<span class="text">Leave</span>
