@@ -193,14 +193,38 @@ else{
   </nav>
   <div class="img"></div>
   <div class="center">
+    
     <div class="btns">
       <button onclick="location.href = 'sendcourier.php';">Request Pickup</button>
       <button class="fa fa-search" aria-hidden="true">Track Now</button>
         <div class="togglesearch">
-        <input type="text" placeholder="Consignment No..."/>
-        <input type="button" value="Search"/>
+        <form action="statuspage.php" method="POST">
+        <input type="text" name="search_box" placeholder="Consignment No..."/>
+        <button class="fa fa-search" aria-hidden="true"  name="search_btn" >SEARCH</button>
         </div>                    
     </div>
+    
+
+    <?php
+    if(isset($_POST['search_btn']))
+    {
+    $consignment_no=$_POST['search_box'];
+ 
+    $rcc= mysqli_query($con,"SELECT `consignment_no`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status` FROM `tbl_courier` WHERE consignment_no='$consignment_no'");
+   while($rrc= mysqli_fetch_array($rcc))
+    {
+    $cons_no=$rrc["consignment_no"];
+    $courier_image=$rrc["courier_image"];
+    $courier_cat=$rrc["courier_cat"];
+    $courier_weight=$rrc["courier_weight"];
+    $status=$rrc["status"];
+    ?>
+
+    <?php
+    }
+    }
+    ?>  
+    </form> 
   </div>
 
   <!--section for About Us-->
