@@ -49,6 +49,28 @@ $userid = $r['id']; //username from table field & $uname is a random name
         margin-bottom: 10px;
         color:#f48c5b;
       }
+      #viewtableid {
+        font-family: "Poppins", sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        }
+        #viewtableid td, #viewtableid th {
+        border: 5px solid #000;
+        padding: 8px;
+        }
+        #viewtableid tr:nth-child(even){background-color: #f2f2f2;}
+        #viewtableid tr:hover {background-color: #ddd;}
+        #viewtableid th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #000;
+        color:  #ff661fd2;
+        }
+        /*VIEW TABLE DESIGN CSS*/
+        .viewtable{
+            height:100%;
+        }
     </style>
 </head>
 <body>
@@ -66,79 +88,64 @@ $userid = $r['id']; //username from table field & $uname is a random name
         </ul>
         </div>
     </nav>
-<table>
-    <tr>
-        <th>Consignment No</th>
-        <th>Courier Image</th>
-        <th>Courier Categery</th>
-        <th>Courier Weight</th>
-        <th>Status</th>
-    </tr>
-    
-        <?php
-        /*
-        if(isset($_POST['search_btn']))
-        {
-        $consignment_no=$_POST['search_box'];
-    
-        $rcc= mysqli_query($con,"SELECT `consignment_no`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status` FROM `tbl_courier` WHERE consignment_no='$consignment_no'");
-        while($rrc= mysqli_fetch_array($rcc))
-        {
-        $cons_no=$rrc["consignment_no"];
-        $courier_image=$rrc["courier_image"];
-        $courier_cat=$rrc["courier_cat"];
-        $courier_weight=$rrc["courier_weight"];
-        $status=$rrc["status"];
-        ?>
-        <?php
-        }
-        }*/
-
-
-        $r=mysqli_query($con,"SELECT `courier_id`, `consignment_no`, `pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`, `username` FROM `tbl_courier` WHERE `username`='$userid'");
-        while($rr= mysqli_fetch_array($r)){
-
-        ?> 
+    <section class="viewtable">
+    <center>
+    <table id="viewtableid" style="margin-top:3%; margin-left:10%">
         <tr>
-    <td><b><?php echo $rr['consignment_no'];?></b></td>
+            <th>Consignment No</th>
+            <th>Courier Image</th>
+            <th>Courier Categery</th>
+            <th>Courier Weight</th>
+            <th>Status</th>
+        </tr>
+        
+            <?php
+            $r=mysqli_query($con,"SELECT `courier_id`, `consignment_no`, `pickup_id`, `delivery_id`, `courier_image`, `courier_cat`, `courier_weight`, `courier_price`, `status`, `username` FROM `tbl_courier` WHERE `username`='$userid'");
+            while($rr= mysqli_fetch_array($r))
+            {
+            ?> 
+        <tr>
+        <td><b><?php echo $rr['consignment_no'];?></b></td>
         <td><img src="images/<?php echo $rr['courier_image'];?>" height="100" width="100"/></td>
         <td><b><?php echo $rr['courier_cat'];?></b></td>
         <td><b><?php echo $rr['courier_weight'];?></b></td>
         <td><b><?php echo $rr['status'];?></b></td>
-    </tr>
-    
-</table>
-<!--
-    <div class="wrapper">
-        <div class="left">
-          <br><br><br><br><br><br><h2 style="color:black;">Consignment Number</h2>
-          <span><h2><b style="color:black;"><?php echo $rr['consignment_no'];?></b></h2></span>
-        </div>
-        <div class="right">
-            <div class="info">
-            <form action="#" method="POST">
-                <h3>Order Status</h3>
-                <div class="info_data">
-                    <div class="data">
-                        <h4>Courier</h4>
-                        <p><img src="images/<?php echo $rr['courier_image'];?>" height="100" width="100"/></p>
+        </tr>
+        
+
+    <!--
+        <div class="wrapper">
+            <div class="left">
+            <br><br><br><br><br><br><h2 style="color:black;">Consignment Number</h2>
+            <span><h2><b style="color:black;"><?php echo $rr['consignment_no'];?></b></h2></span>
+            </div>
+            <div class="right">
+                <div class="info">
+                <form action="#" method="POST">
+                    <h3>Order Status</h3>
+                    <div class="info_data">
+                        <div class="data">
+                            <h4>Courier</h4>
+                            <p><img src="images/<?php echo $rr['courier_image'];?>" height="100" width="100"/></p>
+                        </div>
+                        <div class="data">
+                            <h4>Courier Categery</h4>
+                            <p><?php echo  $rr['courier_cat']; ?></p>
+                        </div>
+                        <div class="data">
+                            <h4>Status</h4>
+                            <b style="color:red;"><?php echo  $rr['status']; ?></b>
+                        </div>
                     </div>
-                    <div class="data">
-                        <h4>Courier Categery</h4>
-                        <p><?php echo  $rr['courier_cat']; ?></p>
-                    </div>
-                    <div class="data">
-                        <h4>Status</h4>
-                        <b style="color:red;"><?php echo  $rr['status']; ?></b>
-                    </div>
-                </div>
-            </form>
-            </div>   
-        </div>
-  </div>-->
-  <?php
-        }
-        ?>
+                </form>
+                </div>   
+            </div>
+    </div>-->
+    <?php
+    }
+    ?>
+    </table>
+    </section>
 
     <!--Footer-->
     <div class="footer">
